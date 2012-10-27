@@ -1,0 +1,14 @@
+# Set gnome-terminal to start with this alternate command.
+dtach -A /tmp/mydtach dvtm
+
+# Then use Ctrl+\ to disconnect.
+# Set i3 config to make Mod+Enter launch gnome-terminal.
+
+# Now you can close with Ctrl+\
+# and always reconnect with Mod+Enter.
+
+# Ctrl+g+c adds a new window within dvtm
+# Ctrl+g+j/k navigates back and forth.
+# Ctrl+g+space changes layouts.
+# Ctrl+g+Enter swaps windows around
+# Ctrl+g+. minimizes the current window.
