@@ -1,0 +1,140 @@
+# Allow connection sharing.
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+# Keep connections reconnectable for 500 seconds after closing
+# ControlPersist 500
+
+# Jump station
+Host lilypad
+	# UIUC!
+	HostName lilypad.cites.uiuc.edu
+
+# RHEL 6 VMs
+# ----------------------------------
+
+# Computer Registration
+Host orwell-test
+	HostName orwell-test.cites.illinois.edu
+
+# SupportPro dev
+Host pillar-dev
+    HostName pillar-dev.cites.illinois.edu
+    User delaport
+
+# Certificate Manager
+Host certainty-dev
+	HostName certainty-dev.cites.illinois.edu
+  User delaport
+
+# SDG Sandbox
+Host caboose
+    HostName caboose.cites.illinois.edu
+
+# UC-Voice
+Host voice-dev
+  HostName voice-dev.cites.illinois.edu
+
+# Cerebro
+Host cerebro-dev
+  HostName phoenix-dev.cites.illinois.edu
+  # HostName cerebro-dev.cites.illinois.edu
+  User delaport
+
+# CISCAT
+Host bigglesworth-dev
+  HostName bigglesworth-dev.cites.illinois.edu
+  User delaport
+
+Host bigglesworth
+  HostName bigglesworth.cites.illinois.edu
+  User delaport
+
+# RHEL4 VMs
+
+# JWatch
+Host jwatch
+    HostName doberman.cites.uiuc.edu
+
+# UC-PIN / Thimble.
+Host thimble-dev
+  HostName thimble-dev.cites.illinois.edu
+  User delaport
+
+# SSL Automation
+Host certmgr
+	HostName certmgr.cites.illinois.edu
+
+# Other stuff
+# ------------------------
+
+# Malware Analysis class
+Host malware
+	HostName 128.174.242.89
+	Port 222
+	User alice 
+
+# CITES
+Host lilypad.cites.uiuc.edu
+Host springer
+	HostName springer.edthedev.com
+	User delaport
+
+# Delaport-desktop
+Host desktop
+	HostName 192.17.24.14
+Host desktop2
+	HostName delaport-3.ci.uiuc.edu
+
+# Secs-tools
+# Old server..
+Host tools
+	HostName csmn.cites.uiuc.edu
+	User delaport
+
+# Development
+Host gerber
+	HostName gerber.cites.illinois.edu
+
+# Test
+Host leatherman
+	HostName leatherman.cites.illinois.edu
+
+# Production
+Host swiss.cites.illinois.edu
+
+# Computer registration application
+# Old
+Host compreg.cites.illinois.edu
+# Development
+Host trikelock.cites.illinois.edu
+# Production
+Host bikelock.cites.illinois.edu
+
+# My servers
+Host minecraft
+	HostName minecraft.edthedev.com
+	Port 22
+	User minecraft 
+
+Host shockwave
+	HostName shockwave.edthedev.com
+	Port 2222
+
+Host teletran
+	HostName minecraft.edthedev.com
+	Port 22
+	User delaport
+
+Host cairo.dreamhost.com
+	User uiucedward
+Host walle.local
+	User tv
+
+Host bumblebee.local
+	User Edward
+Host 98.212.192.55
+	User delaport
+	Port 2222
+
+Host sdg-linux
+	HostName sdg-linux.cites.illinois.edu
