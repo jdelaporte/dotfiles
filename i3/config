@@ -25,6 +25,9 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Screenshot with P
+bindsym $mod+p exec gnome-screenshot -i
+
 # Mail in Mutt
 bindsym $mod+m exec gnome-terminal --execute mutt
 
