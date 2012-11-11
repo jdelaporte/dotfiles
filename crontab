@@ -1,0 +1,1 @@
+*/30 * * * * /usr/bin/unison ~/.unison/ratchet-to-springer.prf &> unison.log
