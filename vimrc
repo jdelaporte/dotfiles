@@ -21,8 +21,8 @@ se spell
 
 "  	Pathogen makes vim plugins easier to manage
 "    ...see http://mirnazim.org/writings/vim-plugins-i-use/
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
 
 " Needed for NERDCommenter:
 "   provides fast easy commenting/uncommenting
@@ -60,7 +60,7 @@ inoremap ii <esc>
 " ab lead Lead Developer
 " ab dev Developer
 
-map <Leader>b :.!bible
+" map <Leader>b :.!bible
 
 " =======================================================
 "  Update screen title
@@ -482,7 +482,7 @@ set sidescroll=1       " Number of cols to scroll at a time
 "#   Color schemes! 
 "# -----------------------------------------------------------------------
 " colorscheme navajo-night
-colorscheme darkeclipse
+" colorscheme darkeclipse
 
 "   Do not leave backups in random locations. 
 " -----------------------------------------------------------------------
