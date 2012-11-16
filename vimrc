@@ -63,6 +63,11 @@ inoremap ii <esc>
 " ab lead Lead Developer
 " ab dev Developer
 
+<<<<<<< HEAD
+=======
+" map <Leader>b :.!bible
+
+>>>>>>> 4b33d33042f31c3873de6c14388ab4b9cfc8611c
 " =======================================================
 "  Update screen title
 " =======================================================
@@ -483,7 +488,7 @@ set sidescroll=1       " Number of cols to scroll at a time
 "#   Color schemes! 
 "# -----------------------------------------------------------------------
 " colorscheme navajo-night
-colorscheme darkeclipse
+" colorscheme darkeclipse
 
 "   Do not leave backups in random locations. 
 " -----------------------------------------------------------------------
