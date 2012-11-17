@@ -1,1 +1,1 @@
-*/30 * * * * /usr/bin/unison ratchet-to-springer.prf -auto -ui text &> unison.log
+*/30 * * * * /home/edward/dotfiles/scripts/unison.ratchet.springer
