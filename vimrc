@@ -4,6 +4,9 @@
 "
 " -------------------------------------------------------
 
+" Auto-complete 
+" Ctrl+X, Ctrl+P - complete from within current file.
+
 " Run the python!!!
 map <F5> :!python %:r.py
 map <F4> :!make html
@@ -60,8 +63,11 @@ inoremap ii <esc>
 " ab lead Lead Developer
 " ab dev Developer
 
+<<<<<<< HEAD
+=======
 " map <Leader>b :.!bible
 
+>>>>>>> 4b33d33042f31c3873de6c14388ab4b9cfc8611c
 " =======================================================
 "  Update screen title
 " =======================================================
@@ -192,7 +198,7 @@ au FileType yml setlocal shiftwidth=4
 au FileType python setlocal textwidth=0
 
 " Do not set paste for Python files...
-au FileType python setlocal nopaste
+" au FileType python setlocal nopaste
 
 " Automatically highlight lines over 80 characters.
 au FileType python let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
@@ -521,8 +527,6 @@ set showmatch "Parenthesis matching.
 "set paste "Don't suck at pasting in text.
 " set foldmethod=marker -- breaks on some systems
 set incsearch "Search as I type
-nmap H ^ 
-nmap L $ 
 
 " =======================================================
 " Editing with Tabs
@@ -530,8 +534,8 @@ nmap L $
 
 "   Indentation is great.
 "-----------------------------------------------------------------------
-set smartindent
-filetype indent on
+" set smartindent
+" filetype indent on
 
 " Re-select visual block after indent/outdent.
 vnoremap < <gv

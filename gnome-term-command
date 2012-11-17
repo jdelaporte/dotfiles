@@ -1,5 +1,8 @@
 # Set gnome-terminal to start with this alternate command.
-dtach -A /tmp/mydtach dvtm
+# dtach -A /tmp/mydtach dvtm
+
+# New session every minute.
+dtach -A dt`date+%d.%H%M.%s` dvtm
 
 # Then use Ctrl+\ to disconnect.
 # Set i3 config to make Mod+Enter launch gnome-terminal.
