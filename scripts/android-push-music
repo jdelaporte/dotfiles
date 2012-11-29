@@ -1,0 +1,25 @@
+#!/bin/bash
+# A quick Linux script to syncronize music with my Droid phone.
+# Usage: 
+# >sync-droid-music /media/DROID
+
+# Uncomment the following for the first run, if you're on Ubuntu:
+# sudo apt-get install rsync
+
+# Move extraneous music files into the Music directory.
+mkdir $1/Music
+mv $1/amazonmp3/* $1/Music
+echo "Moved Amazon MP3s into Music directory."
+
+#  Push any music not on the phone.
+rsync --recursive --progress \
+	~/Music $1
+
+
+#j	--verbose \
+# 	--exclude "*" \
+ #$ --include "*.mp3" \
+#$ 	--include "*.m43" \
+	# --include "*.m3u" \
+ 
+echo "Music pushed to phone."

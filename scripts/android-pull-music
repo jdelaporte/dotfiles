@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Backup all music on the phone.
+rsync --recursive --progress \
+	$1/Music ~
+	# --exclude "*" \
+	# # --include "*.mp3" \
+	# --include "*.m43" \
+	# --include "*.m3u" \
+
+echo "Music backed up from phone."

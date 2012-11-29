@@ -1,0 +1,76 @@
+#!/usr/bin/python
+"""Do some basic sanity checks on a python script."""
+# Copyright 2011 Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: 2011-08-04
+
+import optparse
+import py_compile
+import os
+import traceback
+import time
+import subprocess
+import getpass
+
+parser = optparse.OptionParser()
+parser.add_option('-r', '--realtime', action='store_true')
+parser.add_option('-w', '--html', action='store_true')
+
+(options, args) = parser.parse_args()
+
+def remove_prefix(module_name):
+	module_name = module_name.lstrip('.')
+	result = module_name[module_name.index('.') + 1:]
+	# print result
+	return result
+
+def class_from_file(filename):
+	module_name = filename.replace('.py', '').replace('/', '.').lstrip('.')
+	while 'lib' in module_name or 'bin' in module_name:
+		module_name = remove_prefix(module_name)
+	try:
+		class_obj = __import__(module_name)
+		return (module_name, class_obj)
+	except:
+		print traceback.format_exc()
+	
+	# raise ValueError("Unable to find and import %s" % filename)
+	return (module_name, None)
+
+def checkPythonScript(filename):
+	result = ""
+	try:
+		py_compile.compile(filename)
+		# arg = arg.replace('.pyc', '').replace('.py', ''):
+		# base_name = os.path.basename(filename)
+		(class_name, class_obj) = class_from_file(filename)
+		# print class_name
+		# Make sure it compiles.
+		if options.html:
+			subprocess.call(["pydoc", '-w', class_name])
+			subprocess.Popen(["google-chrome", "%s.html" % class_name])
+		else:
+			subprocess.call(['python2.5', '-c', filename])
+			# subprocess.call(['python2.5', filename, '--help'])
+			if class_obj != None:
+				help(class_obj)
+			else:
+				print "Unable to display help for module %s" % class_name
+				
+		# os.system("python2.5 %s --help" % filename)
+	except:
+		print "%s failed." % filename
+		print traceback.format_exc()
+	return result
+
+if __name__ == '__main__':
+	for filename in args:
+		if options.realtime:
+			choice = None
+			while(choice != 'q'):
+				checkPythonScript(filename)
+				# choice = raw_input('Continue...')
+		else:
+			checkPythonScript(filename)
+

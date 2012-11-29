@@ -1,0 +1,122 @@
+import string
+import bottle
+from bottle import route
+
+class Hand(object):
+  def __init__(self):
+    self.Cards = []
+  def addCard(card):
+    card.y = len(self.Cards)
+    self.Cards.append(card)
+  def __str__(self):
+# Outputs all cards to a single SVG item.
+    result =  """
+      <svg xmlns="http://w3.org/2000/svg" version="1.1"> 
+  """
+    for card in self.Cards:
+      result += str(card)
+    result += """
+      </svg>
+    """
+    return result
+
+# Contains cards
+# Sets x and y of cards according to internal rules.
+# Outputs a full SVG object when called with __str__
+
+class Card(object):
+  def __init__(self, name, x=0, y)=0:
+    self.Name = name
+    self.X = x
+    self.Y = y
+  def __dict__(self):
+    return {
+        'text':self.Name,
+        'x': self.X * 240,
+        'y': self.Y * 120,
+    }
+
+  def __str__(self):
+    return string.Template("""
+    <svg xmlns="http://w3.org/2000/svg" version="1.1"> 
+
+<rect class="card" x=$x y=$y width=120 height=240 render-order="-1"> 
+
+</rect>
+
+<text x="$x" y="$y" render-order=10>$text</text>
+</svg>
+""").substitute(self.__dict__())
+
+class WebTemplate(object):
+  def __init__(self, template="", data={}):
+    self.Template = template 
+    self.Data = data 
+  def __str__(self):
+    return self.webify(self.Data)
+  def render(self):
+    web_data = {}
+    for key in self.Data:
+      web_data[key] = self.webify(key, self.Data[key])
+    return string.Template(self.Template).substitute(web_data)
+  def __iter__(self):
+    return self
+  def next(self):
+    yield(HTTPResponse(str(self)))
+
+  @staticmethod
+  def webify(title, content):
+    result = "<div id=" + title + ">"
+    result += "<h2>" + title + "</h2>"
+    if getattr(content, '__iter__', False):
+      result += "<ul>"
+      for item in content:
+        result += "<li>" + str(item) + "</li>"
+      result += "</ul>"
+    else:
+      result += str(content)
+    result += "</div>"
+      pass
+      pass
+    return result
+
+@route('/')
+def main():
+  data = {}
+  data['hand'] = getHand()
+  data['style'] = getStyle()
+  page = """
+  $style
+  Your Hand: $hand
+  """
+  return WebTemplate(page, data).render()
+
+def getStyle():
+  return """  
+<style type="text/css">
+rect {
+fill: white;
+stroke: black;
+srotke-width:2;
+opacity:1;
+render-order:"-1";
+}
+text {
+text-achor:middle;
+}
+</style>
+
+
+  """
+
+def getHand():
+  h = Hand()
+  h.Cards = [Card('Ace of Diamonds'),
+    Card('Two of Clubs'),
+  ]
+  return h
+
+if __name__ == '__main__':
+  bottle.debug(True)
+  bottle.run(host='192.168.1.9', port=8000)
+

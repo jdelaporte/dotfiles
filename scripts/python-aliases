@@ -1,0 +1,10 @@
+#!/bin/bash
+# Vim aliases...
+alias methods='cat $1 | grep def'
+# This allows this vim command:
+# :tabnew | r !cat <ctrl-r>% | grep def 
+# To become this one: 
+# :tabnew | r !methods <ctrl-r>% 
+alias openallpython="gvim -p `find . | grep 'py' | grep -v svn | grep -v pyc | grep -v init`"
+
+

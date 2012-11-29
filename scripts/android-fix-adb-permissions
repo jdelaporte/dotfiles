@@ -1,0 +1,8 @@
+#!/bin/bash
+export adb_exe=`locate adb | grep bin | grep adb$`
+export adb_exe="/home/delaport/bin/android-sdk-linux/platform-tools/adb"
+echo adb_exe
+$adb_exe kill-server
+
+# sudo $HOME/bin/android-sdk-linux_x86/platform-tools/adb start-server
+sudo $adb_exe start-server

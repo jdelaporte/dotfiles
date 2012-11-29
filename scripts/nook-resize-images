@@ -1,0 +1,9 @@
+export MYBOOKS='/home/delaport/private/books'
+export NOOK='/media/NOOK/My Files/Books/'
+
+# Resize all images.
+for f in `find -name '*.jpg'`
+do
+    mogrify -size 580 "$f"
+    echo "Resized $f"
+done

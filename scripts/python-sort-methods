@@ -1,0 +1,78 @@
+#!/usr/bin/python
+"""outline
+Print lines from a Python file that are relevant to seeing the overall outline.
+"""
+# Copyright 2011 Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: 2011-08-05
+
+import optparse
+import re
+
+parser = optparse.OptionParser()
+parser.add_option('-f', '--file')
+(options, args) = parser.parse_args()
+
+f = open(options.file, 'r')
+lines = f.readlines()
+f.close()
+
+class some_example_class(object):
+    def __init__(self):
+        pass
+
+# Build an outline
+class_regex = re.compile('^class')
+def_regex = re.compile('^\t+def')
+outline = {}
+last_class = ''
+last_def = ''
+outline[last_class] = {}
+outline[last_class][last_def] = []
+# print outline
+for line in lines:
+    if class_regex.match(line):
+        last_class = line
+        outline[last_class] = {}
+        outline[last_class][''] = [] 
+    if def_regex.match(line):
+        last_def = line
+        outline[last_class][last_def] = []
+    else:
+        # print 'last_class: ' + last_class + 'END'
+        outline[last_class][last_def].append(line)
+
+# Print the unclassy stuff.
+# TODO:...
+
+for class_def_line in iter(sorted(outline.iteritems())):
+    print class_def_line
+    for def_line in iter(sorted(outline[class_def_line])):
+        print def_line
+        for line in outline[class_def_line][def_line]:
+            print line
+
+# Print it sorted
+
+keywords = ['def',
+	'class',
+]	
+extended_keywords = [
+	'import',
+	'"""',
+	"'''",
+	'return',
+	]
+
+if options.extended:
+	keywords.extend(extended_keywords)
+
+for filename in args:
+	f = open(filename, 'r')
+	for line in f:
+		for item in keywords:
+			if item in line:
+				line = line.replace('\n', '')
+				print line
+

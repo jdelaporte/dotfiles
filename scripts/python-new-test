@@ -1,0 +1,38 @@
+#!/usr/bin/python
+# Copyright 2011 Edward Delaporte <edthedev@edthedev.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+
+import datetime
+import os
+import sys
+import subprocess
+import edthedev.shell
+import edthedev.settings
+
+settings = edthedev.settings.getSettings()
+scripts_dir = settings.get('scripts', 'directory')
+scripts_dir = os.path.expanduser(scripts_dir)
+script_template_file = settings.get('scripts', 'new_template')
+script_template_file = os.path.expanduser(script_template_file)
+template_file = open(script_template_file, 'r')
+template = template_file.read()
+
+summary = ' '.join(sys.argv[1:])
+if len(summary) == 0:
+	raise ValueError("Please provide a script name.")
+file_name = summary.replace(' ', '').lower()
+
+full_path = "{0}/{1}".format(scripts_dir, file_name)
+
+today = datetime.date.today()
+
+header = template.format(**{'summary':summary, 'year':today.year, 'today':today})
+
+if not os.path.exists(full_path):
+	f = open(full_path, 'w')
+	f.write(header)
+	f.close()
+command = "gvim {0}".format(full_path)
+#edthedev.shell.runShellCommand(command)
+subprocess.call(["vim", full_path])

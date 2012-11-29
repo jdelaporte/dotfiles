@@ -1,0 +1,21 @@
+#!/bin/bash
+# A quick Linux script to backup my Droid phone.
+
+# Uncomment the following for the first run, if you're on Ubuntu:
+# sudo apt-get install rsync
+
+# Do the backup.
+# tar xzvf ~/.droid-backup.tgz ~/.droid-backup
+rsync --recursive --verbose \
+	--exclude "*cache*" \
+	--exclude "*Cache*" \
+	--exclude "*/Podcasts/*" \
+	--exclude "*thumbnails*" \
+	--exclude "*thumbs*" \
+	--exclude "*Music*" \
+	--exclude "*amazonmp3*" \
+	$1* ~/.droid-backup.$2.$3
+now=$(date +"%m_%Y")
+tar czvf ~/.droid-backup.$2.$3.$now.tgz ~/.droid-backup.$2.$3
+
+echo "Created ~/.droid-backup.$2.$3.$now.tgz"
