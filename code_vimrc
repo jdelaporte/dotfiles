@@ -1,0 +1,96 @@
+
+" Run the python!!!
+map <F5> :!python %:r.py
+
+" Check in
+" map <F3> :!hg ci %:r.*
+" map <F3> :!git ci %:r.*
+map <F3> :!svn ci %:r.*
+
+" Auto-complete 
+" Ctrl+X, Ctrl+P - complete from within current file.
+
+set complete=.,b,u,]
+set wildmode=longest,list:longest
+set completeopt=menu,preview
+set expandtab
+
+" List python files...
+" map <Leader>lp :.!find .. -name \*.py -print | grep -v __init__.py
+
+set foldmethod=indent " Fold based on indentation level.
+set foldlevel=20 " Expand all folds
+
+" Complete Python functions with OmniComplete
+set omnifunc=pythoncomplete#Complete
+
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType c set omnifunc=ccomplete#Complete
+
+" -----------------------------------------------------------------
+" PEP8
+" -----------------------------------------------------------------
+
+" Use short tabs for text documents 
+set tabstop=4 
+set shiftwidth=4
+set expandtab
+set textwidth=0
+
+" Automatically highlight lines over 80 characters.
+au FileType python let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+au BufWinEnter *.py let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+" Color lines that are too long them red.
+au FileType python let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+au BufWinEnter *.py let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
+" Status line
+set laststatus=2
+set statusline=
+set statusline +=%1*
+set statusline +=b%n            "buffer number
+set statusline +=\  
+set statusline +=%F%m%r%h%w
+set statusline +=\  
+set statusline +=%l\/%L          
+set statusline +=%4v              "virtual column number
+set statusline +=%1*                     " return to background color
+"
+" Make macros easier on the hands...
+" map Q @@
+
+" Re-select visual block after indent/outdent.
+vnoremap < <gv
+vnoremap > >gv
+
+
+set showmatch "Parenthesis matching.
+
+
+set incsearch "Search as I type
+
+ au FileType python setlocal nopaste
+
+" -----------------------------------------------------------------------
+" :map <Leader>pc :!check-script %:p:h/%<Cr>
+:map <Leader>pc :!hg ci%<Cr>
+:map <Leader>pd :!pydoc %:r<Cr>
+:map <Leader>pe :!tail /var/log/apache2/error.log
+:map <Leader>ph :!check-script --html %<Cr>
+:map <Leader>pm :!listmethods %<Cr>
+" :map <Leader>pl :!pylib 
+:map <Leader>pl :!pylint % > /tmp/out.txt<Cr>:e /tmp/out.txt<Cr>
+:map <Leader>pn :set nu!
+" :map <Leader>pr :!sudo /etc/init.d/apache2 restart<Cr>
+
+" :map <Leader>pv :!w3m http://192.168.1.9/scripts<Cr> 
+:map <Leader>pr :!python % 
+
+" Force period and parens to deliniate words
+" set iskeyword-=\.
+" set iskeyword-=\(
+" set iskeyword-=\)
+
