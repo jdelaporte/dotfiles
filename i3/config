@@ -32,9 +32,10 @@ bindsym $mod+p exec gnome-screenshot -i
 bindsym $mod+m exec gnome-terminal --execute mutt
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec xterm -e dvtm
 # bindsym $mod+Return exec dvtm
+bindsym $mod+Return exec gnome-terminal 
 
 # start a web browser
 bindsym $mod+shift+w exec chromium-browser
