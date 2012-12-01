@@ -37,12 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec dvtm
 
 # start a web browser
-<<<<<<< HEAD
 bindsym $mod+shift+w exec chromium-browser
-=======
-# bindsym $mod+w exec chromium-browser
-bindsym $mod+shift+w exec firefox 
->>>>>>> 4b33d33042f31c3873de6c14388ab4b9cfc8611c
 bindsym $mod+w exec firefox 
 
 # sound control
