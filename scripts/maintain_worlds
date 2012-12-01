@@ -1,0 +1,40 @@
+#!/bin/bash
+# Author: Edward EdTheDev Delaporte 2012
+
+# Do work on several minecraft worlds.
+
+# The list of worlds...
+# for i in "junglevillage,/media/sdb/minecraft/nonlive/jungle/junglevillage" "survival,/media/sdb/minecraft/merged/world" "epicbridge,/home/minecraft/creative_server/epicbridge"
+# for i in "junglevillage,/media/sdb/minecraft/nonlive/jungle/junglevillage" "world,/media/sdb/minecraft/nonlive/merged/world" 
+
+export NON_LIVE_DIR="/media/sdb/minecraft/nonlive"
+export DOWNLOAD_DIR='/media/sdb/minecraft/wiki/data/media'
+export WEB_MAP_DIR='/media/sdb/minecraft/maps'
+
+for i in "junglevillage,/media/sdb/minecraft/jungle/"
+
+do
+# Split the world name, location and nether location
+# echo $i
+IFS=","
+set $i
+
+# Most map software doesn't play nice with a live world file, so make a non-live copy
+echo "Making non-live backup of $1"
+./make_non_live $1 $2/$1 $NON_LIVE_DIR
+echo "Created $NON_LIVE_DIR/$1"
+
+
+echo "Publishing world: $1"
+./publish_map $1 $NON_LIVE_DIR $DOWNLOAD_DIR
+echo "Published world: $1"
+
+
+echo "Updating web map for $1"
+./make_web_map $1 $NON_LIVE_DIR/$1 $WEB_MAP_DIR
+echo "Created $NON_LIVE_DIR/$1"
+
+echo "Wolrd maintainenace complete for $1."
+done
+
+echo "World maintenance completed for all worlds."

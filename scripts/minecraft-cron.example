@@ -1,0 +1,3 @@
+0 0 1 * * $HOME/edthedev/minecraft/make_maps
+0 0 2 * * $HOME/edthedev/minecraft/backup-worlds-local
+0 0 3 * * $HOME/edthedev/minecraft/publish-map

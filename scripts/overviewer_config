@@ -1,0 +1,35 @@
+worlds["jungle"] = "/media/sdb/minecraft/nonlive/jungle/junglevillage"
+worlds["merged"] = "/media/sdb/minecraft/nonlive/survival/world"
+# worlds["epicbridge"] = "/media/sdb/minecraft/nonlive/epicbridge/epicbridge"
+
+renders["survivalday"] = {
+    "world": "jungle",
+    "title": "Jungle Daytime",
+    "rendermode": smooth_lighting,
+    "dimension": "overworld",
+}
+
+renders["survivalnight"] = {
+    "world": "jungle",
+    "title": "Jungle Nighttime",
+    "rendermode": smooth_night,
+    "dimension": "overworld",
+}
+
+renders["mergedday"] = {
+    "world": "merged",
+    "title": "Merged Daytime",
+    "rendermode": smooth_lighting,
+    "dimension": "overworld",
+}
+
+renders["mergednight"] = {
+    "world": "merged",
+    "title": "Merged Night",
+    "rendermode": smooth_night,
+    "dimension": "overworld",
+}
+
+
+outputdir = "/media/sdb/minecraft/maps"
+# texturepath = "/home/username/my_texture_pack.zip"

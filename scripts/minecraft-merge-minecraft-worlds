@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Git lets us get the code.
+# sudo apt-get install git
+# Get the code from the cool dude who wrote it.
+# git clone https://github.com/codewarrior0/pymclevel.git
+
+# Hmm...Looks like we cannot run pymclevel without the numpy library for Python. (Numpy does numeric algebra...i.e. math with maps)
+# Ooh, numpy needs python development libraries...
+# sudo apt-get install python-dev
+# Pip is nice for python libraries.
+# sudo apt-get install pip
+# Pip install numpy for us....
+# sudo pip install numpy
+
+# Get copies of the two worlds to be merged:
+rsync --recursive --verbose \
+--exclude "*.log" \
+--exclude "*.png" \
+minecraft.edthedev.com:~/survival_server/* ~/minecraft_worlds/survival
+
+rsync --recursive --verbose \
+--exclude "*.log" \
+--exclude "*.png" \
+minecraft.edthedev.com:~/prerelease_server/* ~/minecraft_worlds/prerelease
+
+# Your home folder will be different than mine
+echo "~"
+/home/delaport
+
+# Start merging!!!1!
+python pymclevel/mce.py
+Please enter the world name or path to world folder:
+/home/delaport/minecraft_worlds/prerelease/world/level.dat
+
+# Import the other world at coordinates x=5000, z=5000 onto the prerelease world.
+world> import /home/delaport/minecraft_worlds/survival/survival/level.dat 5000,64,5000
+
+# Send the update world up to the server.
+rsync /home/delaport/minecraft_worlds/prerelease minecraft.edthedev.com:~/merged
+
+# Start the new server on the default port.
+ssh minecraft.edthedev.com
+screen -r
+cd ~/merged
+vim server.properties # update the port number
+:wq
+./run
+
+
+# Quiuck script to copy the remote map files to my local computer.
+
+# Uncomment the following for the first run, if you're on Ubuntu:
+# sudo apt-get install rsync
+
+# Do the backup.
+mkdir ~/minecraft_worlds
+
+#rsync --recursive --verbose \
+#  --exclude "*.log" \
+#  --exclude "*.png" \
+#	$1:~/survival_server/* ~/minecraft_worlds/survival
+
+rsync --recursive --verbose \
+  --exclude "*.log" \
+  --exclude "*.png" \
+	$1:/media/sdb/minecraft/prerelease_server/* ~/minecraft_worlds/prerelease
+
+# rsync --recursive --verbose \
+#j  --exclude "*.log" \
+#  --exclude "*.png" \
+#	$1:~/creative_server/* ~/minecraft_worlds/creative

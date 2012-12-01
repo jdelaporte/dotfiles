@@ -1,0 +1,153 @@
+#!/usr/bin/python
+"""mineforward"""
+# Copyright 2011 Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: 2011-06-23
+
+# This script relies on xautomation being installed.
+#   sudo apt-get install xautomation
+
+import optparse
+import time
+import os
+
+parser = optparse.OptionParser()
+# parser.add_option('"-s'", '"--seconds'", action='"store'", type='int',  default=30, help='"How many seconds to mine for.'")
+parser.add_option("-b", "--blocks", action='store', type='int',  default=25, help="How many blocks to mine.")
+parser.add_option("-d", "--delay", action='store', type='int',  default=4, help="A few moments to make sure the desired window has focus.")
+(options, args) = parser.parse_args()
+
+TIME_TO_MINE_ONE_BLOCK = .5 
+TIME_TO_STEP_ONE_BLOCK = .25 
+
+# This value with your sensitivity, screen size, and Minecraft window size.
+# LOOK_TO_SIDE = 1200
+LOOK_TO_SIDE = 1500
+
+LOOK_ONE_BLOCK = 300
+RIGHT_MOUSE = 3
+
+def lookDownAllTheWay():
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+	lookDown()
+
+def mineForward():
+	lookAhead()
+	mineOneBlock()
+	mineOneBlock()
+	time.sleep(.5)
+	lookDown()
+	mineOneBlock()
+	time.sleep(.5)
+	lookUp()
+	stepForward(3)
+
+def buildSquare(size=5):
+	buildBack(size)
+	turnLeft()
+	buildBack(size)
+	turnLeft()
+	buildBack(size)
+	turnLeft()
+	buildBack(size-1)
+
+def buildBack(distance=5):
+	for i in range(1,6):
+		placeBlock()
+		stepBack(1)
+
+def placeBlock():
+	os.system("xte 'mouseclick %d'" % RIGHT_MOUSE)
+
+def stepBack(distance=1):
+	os.system("xte 'keydown s'")
+	time.sleep(TIME_TO_STEP_ONE_BLOCK * distance)
+	os.system("xte 'keyup s'")
+
+def pause():
+	time.sleep(3)
+
+def stepForward(distance=3):
+	os.system("xte 'keydown w'")
+	time.sleep(TIME_TO_STEP_ONE_BLOCK * distance)
+	os.system("xte 'keyup w'")
+
+def mineOneBlock():
+	os.system("xte 'mousedown 1'")
+	time.sleep(TIME_TO_MINE_ONE_BLOCK)
+	os.system("xte 'mouseup 1'")
+
+def lookUp():
+	os.system("xte 'mousermove 0 -%d'" % LOOK_ONE_BLOCK)
+
+def lookDown():
+	os.system("xte 'mousermove 0 %d'" % LOOK_ONE_BLOCK)
+
+def turnRight():
+	os.system("xte 'mousermove %d 0'" % LOOK_TO_SIDE)
+def turnLeft():
+	os.system("xte 'mousermove %d 0'" % LOOK_TO_SIDE)
+
+
+def calibrate():
+	lookAhead()
+	lookUp()
+	pause()
+	lookDown()
+	pause()
+	turnLeft()
+	pause()
+	turnRight()
+
+def lookAhead():
+	lookDownAllTheWay()
+	someExtra = 200
+	lookUp(value=someExtra)
+
+def mineASquare():	
+	# stepForward()
+	mineForward()
+	mineForward()
+	mineForward()
+	mineForward()
+	mineForward()
+	
+	pause()
+	turnRight()
+	pause()
+	mineForward()
+	pause()
+	
+	turnRight()
+	pause()
+	mineForward()
+	mineForward()
+	mineForward()
+	mineForward()
+	pause()
+	
+	turnLeft()
+	pause()
+	mineForward()
+	pause()
+	turnLeft()
+	pause()
+
+time.sleep(options.delay)
+# calibrate()
+# pause()
+# calibrate()
+
+buildSquare(options.blocks)
+
+# for i in range(1, options.blocks):
+# 	mineForward()
