@@ -1,0 +1,37 @@
+#!/usr/bin/python
+"""outline
+Print lines from a Python file that are relevant to seeing the overall outline.
+"""
+# Copyright 2011 Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: 2011-08-05
+
+import optparse
+
+parser = optparse.OptionParser()
+# parser.add_option("-l", "--list", action="store_true", default=False, help="List the    items in the inbox and then exit.")
+parser.add_option("-e", "--extended", action="store_true", help="Display additional lines.")
+(options, args) = parser.parse_args()
+
+keywords = ['def',
+	'class',
+]	
+extended_keywords = [
+	'import',
+	'"""',
+	"'''",
+	'return',
+	]
+
+if options.extended:
+	keywords.extend(extended_keywords)
+
+for filename in args:
+	f = open(filename, 'r')
+	for line in f:
+		for item in keywords:
+			if item in line:
+				line = line.replace('\n', '')
+				print line
+

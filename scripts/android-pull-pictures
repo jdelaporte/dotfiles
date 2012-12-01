@@ -1,0 +1,7 @@
+#!/bin/bash
+# A quick Linux script to backup my Droid phone.
+rm -rf $1/DCIM/.thumbnails
+mv -uv $1/DCIM ~/Pictures
+now=`date +"%m_%d_%Y"`
+mv ~/Pictures/DCIM ~/Pictures/DroidCamera.$now
+echo "Copied all pictures off of Droid."

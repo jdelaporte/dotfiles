@@ -1,0 +1,30 @@
+#!/usr/bin/python
+import subprocess
+import time
+import sys
+import os
+import datetime
+
+python_file = sys.argv[1]
+last_bit = os.path.basename(python_file)
+python_file = "%s/%s" % (os.getcwd(), last_bit)
+
+# class_name = python_file.rstrip('.py')
+
+doc_command = "pydoc -w %s" % python_file
+retcode = subprocess.call([doc_command], shell=True, stdout=subprocess.PIPE)
+
+# Todo: update to grab return from p1 and print to screen, so we can see when errors occur.
+
+html_file = python_file.replace('.py', '.html')
+command = "google-chrome %s" % (html_file)
+print command
+p1 = subprocess.call([command], shell=True, stdout=subprocess.PIPE)
+
+while True:
+	p1 = subprocess.call([doc_command], shell=True, stdout=subprocess.PIPE)
+	if p1 == 0:
+		print "Updated...%s at %s" % (last_bit, str(datetime.datetime.now()))
+	else:
+		print "Error."
+	time.sleep(5)	

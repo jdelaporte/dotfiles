@@ -1,0 +1,6 @@
+#!/bin/bash
+# SVN handles the 'ignore' property in a way that discourages users from keeping it consistent.
+#  Use this script to make it act more like a more modern version control system.
+vim "$PWD/.svnignore"
+svn propset svn:ignore -F "$PWD/.svnignore" $PWD
+# svn propset -R svn:ignore -F "$PWD/.svnignore" $PWD

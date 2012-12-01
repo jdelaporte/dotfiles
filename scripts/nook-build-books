@@ -1,0 +1,10 @@
+export MYBOOKS='/home/delaport/private/books'
+export NOOK='/media/NOOK/My Files/Books/'
+
+nook-resize-images
+
+pandoc --toc -f markdown -t html "$1.mkd" -o "$1.html"
+echo "Created $1.html"
+ebook-convert "$1.html" "$1.epub"
+echo "Created $1.epub"
+# markdown2pdf "$f1

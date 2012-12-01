@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+# @author Edward Delaporte, http://edthedev.com
+import os
+import random
+import subprocess
+
+WP_NAMEFILE = os.path.expanduser("~/.wallpaper")
+wallpaperdir = "~/Pictures/Wallpaper"
+dir = os.path.expanduser(wallpaperdir)
+
+files = os.listdir(dir)
+file = random.choice(files)
+wallpaper_file = "%s/%s" % (dir, file)\
+
+f = open(WP_NAMEFILE,'w')
+f.write(wallpaper_file)
+
+command = "/usr/bin/feh"
+if not os.path.exists(command):
+    print "Wallpaper command %s is not installed." % command
+picture_arg = "--bg-center %s" % wallpaper_file
+subprocess.call([command, "--bg-scale", wallpaper_file])

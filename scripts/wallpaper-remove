@@ -1,0 +1,19 @@
+#!/usr/bin/python
+import os
+import shutil
+
+# @author Edward Delaporte <edthedev@gmail.com>
+
+BACKUPDIR = os.path.expanduser("~/.oldwapapers")
+
+WP_NAMEFILE = os.path.expanduser("~/.wallpaper")
+
+if not os.path.exists(BACKUPDIR):
+	os.mkdir(BACKUPDIR)
+
+f = open(WP_NAMEFILE, 'r')
+current_wallpaper = f.readline()
+
+shutil.move(current_wallpaper, BACKUPDIR)
+print "%s moved to %s" % (current_wallpaper, BACKUPDIR)
+# shutil.remove(WP_NAMEFILE)

@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+import optparse
+import sys
+import urllib
+import os
+import subprocess
+
+parser = optparse.OptionParser()
+parser.add_option('-l', '--level', default=2, type='int')
+(options, args) = parser.parse_args()
+
+if __name__ == '__main__':
+	text = ' '.join(args)
+	clean_text = urllib.quote(text)
+	search_url = "http://google.com/search?sourceid=navclient&btnI=1&q=%s" % (clean_text)
+	clean_site_req = urllib.quote("site:http://docs.python.org/release/2.5/")
+	search_url = "%s+%s" % (search_url, clean_site_req)
+	subprocess.call(["google-chrome", search_url])

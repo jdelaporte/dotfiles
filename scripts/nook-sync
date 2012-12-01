@@ -1,0 +1,5 @@
+# export MYBOOKS='/home/delaport/private/books'
+export MYBOOKS="$HOME/Documents/Books"
+export NOOK='/media/NOOK/My Files'
+
+rsync --include "*.epub" --recursive --verbose "$MYBOOKS" "$NOOK" 

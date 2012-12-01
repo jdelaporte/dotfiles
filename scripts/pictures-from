@@ -1,0 +1,13 @@
+#!/bin/bash
+# A quick Linux script to backup my Droid phone.
+
+# Uncomment the following for the first run, if you're on Ubuntu:
+# sudo apt-get install rsync
+
+# Do the backup.
+rsync --recursive --verbose \
+	--exclude "*cache*" \
+	--exclude "*Cache*" \
+	--exclude "*thumbnails*" \
+	--exclude "*thumbs*" \
+	$1:~/Pictures/* ~/Pictures/$1

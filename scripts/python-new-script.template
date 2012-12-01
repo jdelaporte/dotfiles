@@ -1,0 +1,22 @@
+#!/usr/bin/python
+"""{summary}"""
+# Copyright {year} Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: {today}
+
+import optparse
+import os
+import sys
+import shutil
+import subprocess
+import datetime
+
+import edthedev_inbox 
+
+parser = optparse.OptionParser()
+parser.add_option("-l", "--list", action="store_true", default=False, help="List the    items in the inbox and then exit.")
+(options, args) = parser.parse_args()
+
+output = edthedev_inbox.getOutput('ls -al')
+print output
