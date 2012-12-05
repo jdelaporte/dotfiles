@@ -4,6 +4,12 @@ ControlPath /tmp/ssh_mux_%h_%p_%r
 # Keep connections reconnectable for 500 seconds after closing
 # ControlPersist 500
 
+# Ratchet
+Host ratchet
+    HostName minecraft.edthedev.com
+    User edward
+    Port 2222
+
 # Jump station
 Host lilypad
 	# UIUC!
