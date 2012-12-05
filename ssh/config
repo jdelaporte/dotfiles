@@ -10,6 +10,10 @@ Host ratchet
     User edward
     Port 2222
 
+# BitBucket
+Host bitbucket.org
+    IdentityFile ~/.ssh/id_rsa
+
 # Jump station
 Host lilypad
 	# UIUC!
@@ -80,7 +84,10 @@ Host malware
 	User alice 
 
 # CITES
-Host lilypad.cites.uiuc.edu
+Host lilypad
+    HostName lilypad.cites.uiuc.edu
+    User delaport
+
 Host springer
 	HostName springer.edthedev.com
 	User delaport

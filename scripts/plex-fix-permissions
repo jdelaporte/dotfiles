@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# 'nobody' serves the files through Samba.
+# 'plex' group serves the files to the Roku devices
+
+chown nobody.plex /mnt/backups/plex_media -R
+chmod u+rw /mnt/backups/plex_media -R
+chmod g+r /mnt/backups/plex_media -R

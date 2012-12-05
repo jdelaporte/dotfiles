@@ -1,0 +1,5 @@
+#!/bin/bash
+cd $HOME/minecraft
+mv minecraft_server.jar minecraft_server.last.jar
+wget http://www.minecraft.net/download/minecraft_server.jar?v=1315697443034
+

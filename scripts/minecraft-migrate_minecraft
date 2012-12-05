@@ -1,0 +1,6 @@
+#!/bin/bash
+export SOURCE="walle.local:/Users/TV/minecraft"
+rsync --recursive --verbose \
+	-e ssh $SOURCE \
+	$HOME/migrated
+echo "Minecraft migrated."

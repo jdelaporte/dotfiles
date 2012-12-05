@@ -1,0 +1,9 @@
+#!/bin/bash
+# export WORLD="merged/world"
+export WORLD="/media/sdb/minecraft/merged/world"
+echo "Fixing $WORLD"
+# export CHUNKSTER="/home/minecraft/tools/Chunkster/dist/Chunkster.jar" 
+export CHUNKSTER="/media/sdb/minecraft/Chunkster.jar"
+export FAKE_ARGUMENT="chunksterIsBuggy"
+# java -jar "$CHUNKSTER" --remove-experience-orbs --remove-mobs $FAKE_ARGUMENT $WORLD  
+java -jar $CHUNKSTER $FAKE_ARGUMENT "$WORLD"  

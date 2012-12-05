@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Backing up Minecraft client."
+
+# Uncomment these lines for first run:
+# sudo apt-get install rsync
+#mkdir $HOME/Pictures
+# mkdir $HOME/Pictures/minecraft
+
+# Backup screenshots.
+rsync --recursive --verbose "$HOME/.minecraft/screenshots" "$HOME/Pictures/minecraft"
+# Backup minecraft client.
+rsync --recursive --verbose \
+	--exclude="*/screenshots/*" \
+	"$HOME/.minecraft" "$HOME/minecraft_client_backup" 
+echo "Minecraft client backed up to $HOME/minecraft_client_backup"

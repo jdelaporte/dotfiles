@@ -1,0 +1,3 @@
+#!/bin/bash
+cp -R ~/.minecraft/screenshots ~/Pictures/minecraft
+echo "Minecraft screenshots backed up."

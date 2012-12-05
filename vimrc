@@ -4,7 +4,10 @@
 "
 " -------------------------------------------------------
 
-
+" -----------------------------------------------------------------------
+" Let the leader key be ,  
+" -----------------------------------------------------------------------
+let mapleader=","
 
 " In some cases, code and text settings conflict. 
 "   If your environment is primarily one of the other
@@ -16,11 +19,6 @@ source ~/.text_vimrc
 
 " Settings specific to editing python code
 source ~/.code_vimrc
-
-" -----------------------------------------------------------------------
-" Let the leader key be ,  
-" -----------------------------------------------------------------------
-let mapleader=","
 
 
 " Some generally useful settings

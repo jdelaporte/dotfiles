@@ -1,0 +1,26 @@
+#!/bin/bash
+# Author: Edward EdTheDev Delaporte 2012
+
+export DOWNLOAD_DIR="$3"
+
+echo "Publishing world: $2/$1"
+
+# Compress the world files 
+echo "Compressing $2/$1"
+# tar czf /tmp/$1.tgz $2/$1
+zip -r /tmp/$1.zip $2/$1/ 
+# Compress the nether files
+echo "Compressing the Nether..."
+# tar czf /tmp/$1_nether.tgz $2/$1_nether
+zip -r /tmp/$1_nether.zip $2/$1_nether/ 
+echo "Compressing The End..."
+# tar czf /tmp/$1_the_end.tgz $2/$1_the_end
+zip -r /tmp/$1_the_end.zip $2/$1_the_end/ 
+
+# Publish them
+echo "Publishing to $DOWNLOAD_DIR..."
+mv /tmp/$1.zip "$DOWNLOAD_DIR"
+mv /tmp/$1_the_end.zip "$DOWNLOAD_DIR"
+mv /tmp/$1_nether.zip "$DOWNLOAD_DIR"
+
+echo "$1 published for download to $DOWNLOAD_DIR."

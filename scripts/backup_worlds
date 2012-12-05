@@ -1,0 +1,20 @@
+#!/bin/sh
+
+MC_PATH="$HOME"
+BACKUP_PATH="$HOME/backups"
+NEW_FOLDER=`date +%Y/%m/%d`
+
+echo "Creating backup directory..."
+mkdir -p $BACKUP_PATH/$NEW_FOLDER
+mkdir -p $BACKUP_PATH/$NEW_FOLDER/survival
+mkdir -p $BACKUP_PATH/$NEW_FOLDER/creative
+
+echo "Starting backup..."
+# cp -R $MC_PATH/survival_server/survival $BACKUP_PATH/$NEW_FOLDER/survival
+# cp -R $MC_PATH/creative_server/epicbridge $BACKUP_PATH/$NEW_FOLDER/creative
+# cp -R $MC_PATH/prerelease_server/world $BACKUP_PATH/$NEW_FOLDER/prerelease_server
+# rsync --recursive /media/sdb/minecraft/merged $BACKUP_PATH/$NEW_FOLDER/survival
+cp -R /media/sdb/minecraft/merged $BACKUP_PATH/$NEW_FOLDER/survival
+
+
+echo "Successfully backed up to: $BACKUP_PATH/$NEW_FOLDER"

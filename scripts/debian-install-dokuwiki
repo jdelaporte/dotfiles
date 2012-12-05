@@ -1,0 +1,27 @@
+#!/bin/bash
+
+export WIKI_DATA=/usr/share/dokuwiki/data
+export WIKI_CONF=/usr/share/dokuwiki/conf
+
+
+sudo mkdir $WIKI_DATA
+sudo chown -R www-data $WIKI_DATA
+sudo mkdir $WIKI_DATA/attic
+sudo chown www-data $WIKI_DATA/attic
+sudo mkdir $WIKI_DATA/pages
+sudo chown www-data $WIKI_DATA/pages
+sudo mkdir $WIKI_DATA/media
+sudo chown www-data $WIKI_DATA/media
+sudo mkdir $WIKI_DATA/meta
+sudo chown www-data $WIKI_DATA/meta
+sudo mkdir $WIKI_DATA/cache
+sudo chown www-data $WIKI_DATA/cache
+sudo mkdir $WIKI_DATA/locks
+sudo chown www-data $WIKI_DATA/locks
+sudo mkdir $WIKI_DATA/index
+sudo chown www-data $WIKI_DATA/index
+sudo mkdir $WIKI_DATA/tmp
+sudo chown www-data $WIKI_DATA/tmp
+
+sudo mkdir $WIKI_CONF
+sudo chown -R www-data $WIKI_CONF
