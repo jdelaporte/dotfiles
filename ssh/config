@@ -4,6 +4,8 @@ ControlPath /tmp/ssh_mux_%h_%p_%r
 # Keep connections reconnectable for 500 seconds after closing
 # ControlPersist 500
 
+
+
 # BitBucket
 Host bitbucket.org
     IdentityFile ~/.ssh/id_rsa
@@ -122,6 +124,10 @@ Host minecraft
 	HostName minecraft.edthedev.com
 	Port 22
 	User minecraft 
+
+Host sydeswype
+	HostName minecraft.edthedev.com
+	User edward 
 
 Host shockwave
 	HostName shockwave.edthedev.com

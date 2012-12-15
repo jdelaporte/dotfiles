@@ -4,7 +4,7 @@
 " =======================================================
 
 " SpellCheck
-se spell
+" se spell
 
 " Generate some HTML
 map <F4> :!make html

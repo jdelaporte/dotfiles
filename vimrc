@@ -4,7 +4,10 @@
 "
 " -------------------------------------------------------
 
-
+" -----------------------------------------------------------------------
+" Let the leader key be ,  
+" -----------------------------------------------------------------------
+let mapleader=","
 
 " In some cases, code and text settings conflict. 
 "   If your environment is primarily one of the other
@@ -17,11 +20,8 @@ source ~/.text_vimrc
 " Settings specific to editing python code
 source ~/.code_vimrc
 
-" -----------------------------------------------------------------------
-" Let the leader key be ,  
-" -----------------------------------------------------------------------
-let mapleader=","
-
+" Quickly modify the vimrc
+:map <Leader>sv :so $HOME/.vimrc<Cr>
 
 " Some generally useful settings
 " -----------------------------------------------------------------------
@@ -33,12 +33,8 @@ syntax enable  " Highlight syntax
 set vb t_vb= "Flash instead of beep.
 set ruler
 
-" Quickly modify the vimrc
-:map <Leader>sv :so $HOME/.vimrc<Cr>
 
 hi CursorLine guibg=#2d2d2d
-
-
 
 "   Do not leave backups in random locations. 
 " -----------------------------------------------------------------------
@@ -57,9 +53,6 @@ set sidescroll=1       " Number of cols to scroll at a time
 "-----------------------------------------------------------------------
 " set smartindent
 " filetype indent on
-
-
-
 
 "  	Pathogen makes vim plugins easier to manage
 "-----------------------------------------------------------------------
