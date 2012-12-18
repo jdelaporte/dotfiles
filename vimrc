@@ -20,11 +20,8 @@ source ~/.text_vimrc
 " Settings specific to editing python code
 source ~/.code_vimrc
 
-<<<<<<< HEAD
-=======
 " Quickly modify the vimrc
 :map <Leader>sv :so $HOME/.vimrc<Cr>
->>>>>>> d92f4fb1ad5e9f50aa9a0374c06b4e37fc5526f9
 
 " Some generally useful settings
 " -----------------------------------------------------------------------
