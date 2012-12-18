@@ -93,4 +93,4 @@ set incsearch "Search as I type
 " set iskeyword-=\.
 " set iskeyword-=\(
 " set iskeyword-=\)
-
+set nospell

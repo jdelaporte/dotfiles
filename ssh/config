@@ -136,6 +136,10 @@ Host minecraft
 	Port 22
 	User minecraft 
 
+Host sydeswype
+	HostName minecraft.edthedev.com
+	User edward 
+
 Host shockwave
 	HostName shockwave.edthedev.com
 	Port 2222

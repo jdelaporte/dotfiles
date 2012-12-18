@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Create destination folders
+mkdir $HOME/install 2>/dev/null &1>2
 mkdir $HOME/Music 2>/dev/null &1>2
 mkdir $HOME/Music/download 2>/dev/null &1>2
 mkdir $HOME/Documents/Books 2>/dev/null &1>2
@@ -24,7 +25,6 @@ mv $i/*.mov $HOME/Movies 2>/dev/null &1>2
 mv $i/*.3g2 $HOME/Movies 2>/dev/null &1>2
 
 # Cleanup all the installers!!!
-mkdir $HOME/install 2>/dev/null &1>2
 mv $i/*.apk $HOME/install 2>/dev/null &1>2
 mv $i/*.tgz $HOME/install 2>/dev/null &1>2
 mv $i/*.tar $HOME/install 2>/dev/null &1>2

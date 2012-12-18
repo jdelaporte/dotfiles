@@ -1,0 +1,3 @@
+# Make EdTheDev dotfiles scripts available.
+PATH=$PATH:$HOME/dotfiles/scripts
+export PATH

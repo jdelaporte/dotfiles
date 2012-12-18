@@ -20,6 +20,11 @@ source ~/.text_vimrc
 " Settings specific to editing python code
 source ~/.code_vimrc
 
+<<<<<<< HEAD
+=======
+" Quickly modify the vimrc
+:map <Leader>sv :so $HOME/.vimrc<Cr>
+>>>>>>> d92f4fb1ad5e9f50aa9a0374c06b4e37fc5526f9
 
 " Some generally useful settings
 " -----------------------------------------------------------------------
@@ -31,12 +36,8 @@ syntax enable  " Highlight syntax
 set vb t_vb= "Flash instead of beep.
 set ruler
 
-" Quickly modify the vimrc
-:map <Leader>sv :so $HOME/.vimrc<Cr>
 
 hi CursorLine guibg=#2d2d2d
-
-
 
 "   Do not leave backups in random locations. 
 " -----------------------------------------------------------------------
@@ -55,9 +56,6 @@ set sidescroll=1       " Number of cols to scroll at a time
 "-----------------------------------------------------------------------
 " set smartindent
 " filetype indent on
-
-
-
 
 "  	Pathogen makes vim plugins easier to manage
 "-----------------------------------------------------------------------
