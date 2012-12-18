@@ -4,6 +4,13 @@ ControlPath /tmp/ssh_mux_%h_%p_%r
 # Keep connections reconnectable for 500 seconds after closing
 # ControlPersist 500
 
+# TrailCutter
+
+Host trailcutter
+    HostName 50.81.130.161
+    Port 22
+    User edward
+
 # Ratchet
 Host ratchet
     HostName minecraft.edthedev.com
