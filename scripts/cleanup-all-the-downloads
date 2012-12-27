@@ -76,6 +76,8 @@ mv $i/*.txt $INBOX 2>/dev/null &1>2
 mv $i/*.png $INBOX 2>/dev/null &1>2
 mv $i/*.jpg $INBOX 2>/dev/null &1>2
 mv $i/*.JPG $INBOX 2>/dev/null &1>2
+mv $i/*.jpeg $INBOX 2>/dev/null &1>2
+mv $i/*.JPEG $INBOX 2>/dev/null &1>2
 # Graphs
 mv $i/*.graffle $INBOX 2>/dev/null &1>2
 mv $i/*.uml $INBOX 2>/dev/null &1>2
