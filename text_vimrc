@@ -194,3 +194,16 @@ map <Leader>d :.!toggle_task<Cr>$
 
 
 
+" Add this to your ~/.vimrc
+function! HandleURL()
+    let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+    echo s:uri
+    if s:uri != ""
+        silent exec "!gnome-open '".s:uri."'"
+    else
+        echo "No URI found in line."
+    endif
+endfunction
+map <leader>u :call HandleURL()<cr>
+map <Leader>wh :e ~/Dropbox/notes/wiki/home<cr>
+
