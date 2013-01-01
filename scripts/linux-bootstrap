@@ -1,0 +1,21 @@
+
+sudo yum install vim git 
+
+cd ~
+echo "Cloning doftiles."
+git clone git@github.com:edthedev/dotfiles.git
+cd ~/doftiles
+echo "Linking doftiles."
+python builddotfiles.py -l
+
+echo "Make Firefox tolerable."
+firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/ &
+firefox https://addons.mozilla.org/en-US/firefox/addon/sitelauncher/eula/148276?src=dp-btn-primary &
+
+echo "Download Dropbox Installer"
+firefox https://www.dropbox.com/install?os=lnx &
+
+echo "Press Enter once the Dropbox installer is downloaded."
+read whatever
+sudo rpm --install ~/Downloads/nautilus-dropbox-1.4.0-1.fedora.x86_64.rpm
+
