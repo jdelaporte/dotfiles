@@ -1,5 +1,5 @@
 
-sudo yum install vim git 
+sudo yum install vim git dvtm dtach
 
 cd ~
 echo "Cloning doftiles."
@@ -9,8 +9,7 @@ echo "Linking doftiles."
 python builddotfiles.py -l
 
 echo "Make Firefox tolerable."
-firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/ &
-firefox https://addons.mozilla.org/en-US/firefox/addon/sitelauncher/eula/148276?src=dp-btn-primary &
+firefox https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/ https://addons.mozilla.org/en-US/firefox/addon/omnibar/ https://addons.mozilla.org/en-US/firefox/addon/sitelauncher/eula/148276?src=dp-btn-primary &
 
 echo "Download Dropbox Installer"
 firefox https://www.dropbox.com/install?os=lnx &
