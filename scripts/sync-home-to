@@ -1,3 +1,19 @@
 #!/bin/bash
 
-rsync $HOME $1:$HOME --recursive --progress
+mkdir $HOME/Pictures
+mkdir $HOME/Pictures/minecraft
+mv $HOME/.minecraft/screenshots/* $HOME/Pictures/minecraft
+
+echo "Copying all non-temporary files from $HOME to $1:$HOME"
+rsync $HOME --recursive --progress \
+    --exclude ".adobe" \
+    --exclude ".cache" \
+    --exclude ".dropbox-dist" \
+    --exclude ".dropbox" \
+    --exclude ".local" \
+    --exclude ".minecraft" \
+    --exclude ".mozilla" \
+    --exclude ".shotwell" \
+    --exclude "$HOME/.*" \
+    $1:$HOME
+
