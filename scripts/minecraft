@@ -2,5 +2,8 @@
 
 # java -Xmx1024M -Xms512M -cp $HOME/.minecraft/bin/minecraft.jar net.minecraft.LauncherFrame
 
+# java -Xmx2048M -Xms1024M -cp -jar $1 net.minecraft.LauncherFrame
+# java -Xmx2048M -Xms1024M -cp $1 net.minecraft.LauncherFrame
+#java -Xmx2048M -Xms1024M -cp $1 
 # java -Xmx1024M -Xms512M -cp $1 net.minecraft.LauncherFrame
 java -Xmx2048M -Xms1024M -cp $1 net.minecraft.LauncherFrame
