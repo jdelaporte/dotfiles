@@ -63,11 +63,8 @@ inoremap ii <esc>
 " ab lead Lead Developer
 " ab dev Developer
 
-<<<<<<< HEAD
-=======
 " map <Leader>b :.!bible
 
->>>>>>> 4b33d33042f31c3873de6c14388ab4b9cfc8611c
 " =======================================================
 "  Update screen title
 " =======================================================
