@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo dpkg --set-selections < $HOSTNAME-installed-software.log
+sudo apt-get install dselect
+sudo dselect

@@ -1,0 +1,37 @@
+#!/usr/bin/env  python
+'''Run svn st command on all sudirectories.'''
+# Copyright 2011 Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: 2011-06-27
+import os
+import subprocess
+
+def getOutput(command):
+	p1 = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE)
+	output = p1.communicate()[0]
+	return output
+
+def isSVNDir(directory):
+  contents = os.listdir(directory)
+  if '.svn' in contents:
+    return True
+  return False
+
+result = [] 
+dirs = []
+for dirname, dirnames, filenames in os.walk(os.curdir):
+  for subdir in dirnames:
+    dirs.append(os.path.join(dirname, subdir))
+
+for item in dirs:
+  # print item
+  if isSVNDir(item):
+    svn_output = getOutput('svn st %s' % item)
+    if len(svn_output) > 0:
+      print item
+      print svn_output
+      # result.append(item)
+      # result.append(svn_output)
+
+# print '\n'.join(result)

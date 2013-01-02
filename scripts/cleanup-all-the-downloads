@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# Create destination folders
+mkdir $HOME/install 2>/dev/null &1>2
+mkdir $HOME/Music 2>/dev/null &1>2
+mkdir $HOME/Music/download 2>/dev/null &1>2
+mkdir $HOME/Documents/Books 2>/dev/null &1>2
+mkdir $HOME/Documents/Code 2>/dev/null &1>2
+
+for i in "$HOME" "$HOME/Downloads"
+
+do
+
+set -v off 
+
+had=$(ls -1 $i | wc -l)
+echo "Cleaning $i...($had files)"
+
+# Cleanup all the music!!
+mv $i/*.mp3 $HOME/Music/download 2>/dev/null &1>2
+
+# Cleanup all the movies!!
+mv $i/*.MOV $HOME/Movies 2>/dev/null &1>2
+mv $i/*.mov $HOME/Movies 2>/dev/null &1>2
+mv $i/*.3g2 $HOME/Movies 2>/dev/null &1>2
+
+# Cleanup all the installers!!!
+mv $i/*.apk $HOME/install 2>/dev/null &1>2
+mv $i/*.tgz $HOME/install 2>/dev/null &1>2
+mv $i/*.tar $HOME/install 2>/dev/null &1>2
+mv $i/*.tar.bz2 $HOME/install 2>/dev/null &1>2
+mv $i/*.tar.gz $HOME/install 2>/dev/null &1>2
+mv $i/*.zip $HOME/install 2>/dev/null &1>2
+mv $i/*.rar $HOME/install 2>/dev/null &1>2
+mv $i/*.air $HOME/install 2>/dev/null &1>2
+mv $i/*.exe $HOME/install 2>/dev/null &1>2
+mv $i/*.deb $HOME/install 2>/dev/null &1>2
+mv $i/*.jar $HOME/install 2>/dev/null &1>2
+mv $i/*.iso $HOME/install 2>/dev/null &1>2
+mv $i/*.sh $HOME/install 2>/dev/null &1>2
+mv $i/*.run $HOME/install 2>/dev/null &1>2
+mv $i/*.rpm $HOME/install 2>/dev/null &1>2
+mv $i/*.xpi $HOME/install 2>/dev/null &1>2
+mv $i/*.torrent $HOME/install 2>/dev/null &1>2
+# Cleanup all the Ebooks!!
+mv $i/*.epub $HOME/Documents/Books 2>/dev/null &1>2
+# Kindle...
+mv $i/*.azw $HOME/Documents/Books 2>/dev/null &1>2
+
+
+# Cleanup all the Code!!!
+mv $i/*.bat $HOME/Documents/Code 2>/dev/null &1>2
+mv $i/*.pl $HOME/Documents/Code 2>/dev/null &1>2
+mv $i/*.py $HOME/Documents/Code 2>/dev/null &1>2
+mv $i/*.vim $HOME/Documents/Code 2>/dev/null &1>2
+mv $i/*.vba $HOME/Documents/Code 2>/dev/null &1>2
+mv $i/*.vbs $HOME/Documents/Code 2>/dev/null &1>2
+mv $i/*.xml $HOME/Documents/Code 2>/dev/null &1>2
+
+# Remove all the compiled stuff...
+rm $i/*.pyc 2>/dev/null &1>2
+
+# Cleanup all the documents!!!
+# Assumes $INBOX is defined and edthedev.org package is being used to manage it.
+# Documents
+mv $i/*.docx $INBOX 2>/dev/null &1>2
+mv $i/*.doc $INBOX 2>/dev/null &1>2
+mv $i/*.xlsx $INBOX 2>/dev/null &1>2
+mv $i/*.xls $INBOX 2>/dev/null &1>2
+mv $i/*.pdf $INBOX 2>/dev/null &1>2
+mv $i/*.rtf $INBOX 2>/dev/null &1>2
+# Text
+mv $i/*.csv $INBOX 2>/dev/null &1>2
+mv $i/*.txt $INBOX 2>/dev/null &1>2
+# Images
+mv $i/*.png $INBOX 2>/dev/null &1>2
+mv $i/*.jpg $INBOX 2>/dev/null &1>2
+mv $i/*.JPG $INBOX 2>/dev/null &1>2
+mv $i/*.jpeg $INBOX 2>/dev/null &1>2
+mv $i/*.JPEG $INBOX 2>/dev/null &1>2
+# Graphs
+mv $i/*.graffle $INBOX 2>/dev/null &1>2
+mv $i/*.uml $INBOX 2>/dev/null &1>2
+mv $i/*.mm $INBOX 2>/dev/null &1>2 
+# Presentations
+mv $i/*.ppt $INBOX 2>/dev/null &1>2
+mv $i/*.pptx $INBOX 2>/dev/null &1>2
+# Cleanup all the config files!!!
+mv $i/*.cfg $INBOX 2>/dev/null &1>2 
+mv $i/*.INI $INBOX 2>/dev/null &1>2 
+
+has=$(ls -1 $i | wc -l)
+echo "Finished cleaning $i...($has files)"
+
+set -v on 
+
+done

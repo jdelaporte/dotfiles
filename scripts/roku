@@ -1,0 +1,138 @@
+#!/usr/bin/python
+ipaddress="192.168.1.18"
+ipaddress="192.168.1.22"
+ipaddress="192.168.1.19"
+# ipaddress="192.168.1.9" # Not a roku
+ipaddress="192.168.1.8" 
+ # NetGear Router, with port 8060 forwarded
+# ipaddress="192.168.1.4"
+
+roku_missing_msg = """If you're having trouble finding your
+Roku, try this command:
+sudo apt-get install nmap
+sudo nmap -O -sS 192.168.1.0/24 --host-timeout=15s > roku_search.txt
+
+It will take several minutes.
+Look in the results for a device with port 8060 open.
+
+cat roku_search.txt
+"""
+
+device_url = "http://%s:8060" % ipaddress
+
+import sys
+import urllib
+import string
+
+command = sys.argv[1]
+
+data = ""
+fields = {
+  'url':device_url,
+  'command':command
+  }
+
+commandmap = {
+  'play':'play',
+  'home':'Home',
+  'select':'select',
+  'type':'',
+}
+
+# Commands: 
+#Home
+#Rev
+#Fwd
+#Play
+#Select
+#Left
+#Right
+#Down
+#Up
+#Back
+#InstantReplay
+#Info
+#Backspace
+#Search
+#Enter
+#Lit_
+
+#Lit_ is special, you enter a letter with Lit_x. For example, to search for movies containing "foo", you'd hit the following 5 urls in order:
+#
+#Search
+#Lit_F
+#Lit_O
+#Lit_O
+#Enter
+#
+
+#
+
+#if command == 'play' or command == 'pause':
+#  command = string.Template("$url/keypress/play")  
+
+commands = []
+commands.append(commandmap[command])
+
+import time
+
+delay = 1  
+if command == 'search' or command == 'type':
+  character_count = 0
+  commands.append('wait')
+  # term = ' '.join(sys.argv[2:])
+  term = sys.argv[2]
+  for letter in term:
+#    if character_count >= 5:
+#      time.sleep(.5)
+#      character_count = 0
+#    character_count += 1
+#    if letter == ' ':
+#      letter = ''
+    time.sleep(delay)
+    commands.append("Lit_%s" % letter)
+for command in commands:
+  if command == 'wait':
+    time.sleep(1)
+  else:
+    command_template = string.Template("$url/keypress/$command")  
+    fields['command'] = command
+    command_url = command_template.substitute(fields)
+    print command_url
+    try:
+        urllib.urlopen(command_url, data)
+    except IOError:
+        error_msg = string.Template("Bad connection. $ip is probably not a Roku")
+        print error_msg.substitute({'ip':ipaddress})
+        print roku_missing_msg
+
+#
+## curl http://192.168.1.6:8060/query/apps                              
+#<apps>                                                                 
+# <app id="5127" version="1.0.10">Roku Spotlight</app>                  
+# <app id="11" version="2.1.22">Roku Channel Store</app>                
+# <app id="12" version="2.3.20">Netflix</app>                           
+# <app id="2016" version="2.0.37">Movies on Demand</app>                
+# <app id="2285" version="1.9.1">Hulu Plus</app>                        
+# <app id="28" version="1.0.24">Pandora</app>                           
+# <app id="1688" version="1.5.10">Roku Newscaster</app>                 
+# <app id="1756" version="1.5.5">Funny Videos and Pics by Break</app>   
+# <app id="2115" version="1.4.1">SHOUTcast Internet Radio</app>         
+# <app id="27" version="1.1.110207">Mediafly</app>                      
+# <app id="2898" version="0.0.0">Weather Underground</app>              
+# <app id="2963" version="1.0.0">My Damn Channel</app>
+# <app id="4070" version="1.5.1306292789">TEDTalks</app>
+# <app id="45" version="1.5.0">Revision3</app>
+# <app id="4687" version="1.0.0">Inmoo </app>
+# <app id="6493" version="1.0.1">Sunlight Foundation White House Video Stream</app>
+# <app id="1980" version="1.1.100907">Vimeo</app>
+# <app id="2091" version="1.2.1">Warriors of War</app>
+#</apps>
+##
+#
+#If you want to watch a channel, just hit this url containing the numerical ID. For example, if you want to check the weather:
+#
+#/launch/11?contentID=2898
+#
+#And using the numerical ID, you can view that channel's icon using this url: /query/icon/2898. 
+

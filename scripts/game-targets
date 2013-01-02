@@ -1,0 +1,77 @@
+#!/usr/bin/python
+"""target game"""
+# Copyright 2011 Edward Delaporte <edthedev@gmail.com>
+# Licensed under the University of Illinois / NCSA Open Source License 
+# http://www.opensource.org/licenses/UoI-NCSA 
+# Created: 2011-06-22
+
+import random
+import sys
+
+class Target:
+	def __init__(self):
+		self.Location = random.choice(range(8))
+		self.Velocity = random.choice(range(-4,5))
+	def __str__(self):
+		return "Loc: %d, Vel: %d" % (self.Location, self.Velocity)
+	def updatePosition(self):
+		self.Location = self.Location + self.Velocity
+		if self.Location < 0:
+			self.Location = abs(self.Location)
+			self.Velocity = - self.Velocity
+		if self.Location > 7:
+			self.Location = 7 - (self.Location - 7)
+			self.Velocity = - self.Velocity
+
+class Field:
+	def __init__(self):
+		self.Hits = 0
+		self.Shots = 0
+		random.seed()
+		self.reset()
+	def __str__(self):
+		EMPTY =  '_____'
+		TARGET = '[---]'
+		result = [EMPTY for i in range(8)]
+		for target in self.Targets:
+			# print str(target)
+			result[target.Location] = TARGET
+		field = ' '.join(result)
+		ammo = '|' * self.Ammo
+		hit_percentage = 0
+		if self.Shots > 0:
+			hit_percentage = self.Hits / self.Shots
+		return "%d\t%s\n%s" % (hit_percentage, ammo, field)
+	def shoot(self, location):
+		self.Shots += 1
+		self.Ammo -= 1
+		for t in self.Targets:
+			if t.Location == location:
+				self.Hits += 1
+				self.Targets.remove(t)
+		if self.Ammo <= 0:
+			print "Out of ammo."
+			sys.exit()
+
+	def reset(self):
+		print "New targets launched!"
+		print "-----------------------"
+		self.Ammo = 5 
+		self.Targets = []
+		number_of_targets = random.choice(range(2,5))
+		for i in range(1,number_of_targets):
+			self.Targets.append(Target())
+
+field = Field()
+
+choice = ''
+while choice != 'exit':
+	print field
+	choice = raw_input('?')
+	for t in field.Targets:
+		t.updatePosition()
+	if choice.isdigit():
+		field.shoot(int(choice))
+	if choice == 'pull':
+		if len(field.Targets) == 0:
+			field.reset()

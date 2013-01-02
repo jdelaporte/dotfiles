@@ -1,0 +1,18 @@
+# Use the xrandr command with no arguments to determine the names of your connected monitors.
+export MONITORLEFT=DVI-1
+export MONITORRIGHT=DVI-0
+export MONITORLAPTOP=LVDS1
+
+# Docking station cannot use second monitor while 
+#   laptop screen is on.
+# xrandr --output $MONITORLAPTOP --off
+
+
+# Enable second monitor.
+xrandr --output $MONITORLEFT --auto --rotate normal 
+# xrandr --output $MONITORRIGHT --auto --right-of $MONITORLEFT --rotate left
+# xrandr --output $MONITORRIGHT --auto --right-of $MONITORLEFT --rotate left
+xrandr --output $MONITORRIGHT --auto --right-of $MONITORLEFT --rotate normal 
+
+# Set a constant DPI, to avoid stretching and stuff.
+# xrandr --dpi 75

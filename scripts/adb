@@ -1,0 +1,4 @@
+#!/bin/bash
+export adb_exe=`locate adb | grep bin | grep adb$`
+echo $adb_exe
+$adb_exe $@ 

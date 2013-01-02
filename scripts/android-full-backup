@@ -1,0 +1,20 @@
+#!/bin/bash
+# A quick Linux script to backup my Droid phone.
+# Usage: backup-droid-full /media/DROID DROID
+
+# Uncomment the following for the first run, if you're on Ubuntu:
+# sudo apt-get install rsync
+
+
+# Pull pictures off of Droid.
+pull-droid-pictures $1
+
+# Keep PC and Droid music in sync
+sync-droid-music $1
+
+# Backup other files that might come in handy.
+backup-droid-quick $1 $2 $3
+
+# TODO: Backup applications
+#  - Have not cared enough to implement this yet.
+

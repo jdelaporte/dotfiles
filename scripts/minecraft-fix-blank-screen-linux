@@ -1,0 +1,32 @@
+#!/bin/bash
+# Author: Edward EdTheDev Delaporte
+
+# echo "Backing up minecraft."
+# backup-minecraft
+
+echo "Updating Lightweight Java Gaming Library...because Notch doesn't always."
+echo "Please download the latest LWJGL .zip file to ~/Downloads..."
+# firefox "http://lwjgl.org/download.php"
+
+unzip ~/Downloads/lwj*.zip
+cd lwj*
+
+# Install the updated .jar files.
+echo "Installing updated .jar files."
+cp jar/*.jar ~/.minecraft/bin/
+
+echo "Installing updated Linux libraries."
+cp native/linux/* ~/.minecraft/bin/natives/
+# Alternatives are:  macosx  solaris  windows
+# Uncomment the alternative you need below.
+
+# Apple/Macintosh
+# cp native/macosx/* ~/.minecraft/bin/natives/
+
+# Solaris - You have GOT to be joking.
+# cp native/solaris/* ~/.minecraft/bin/natives/
+
+# Cygwin...really?
+# cp native/windows/* ~/.minecraft/bin/natives/
+
+echo "All done. Try running minecraft again."

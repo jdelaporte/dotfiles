@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Not a good way to do this, but you get the idea...
+echo "Moving your other RPM and DEB downloads (if you have any) out of the way."
+mkdir $HOME/Downloads/other_rpms
+mkdir $HOME/Downloads/other_debs
+mv $HOME/Downloads/*.rpm $HOME/Downloads/other_rpms
+mv $HOME/Downloads/*.deb $HOME/Downloads/other_debs
+
+# Time to download some RPMs
+$BROWSER http://www.oracle.com/technetwork/database/features/instant-client/index.html
+$BROWSER http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html
+echo "Now you get to sign in and click to download the SQLPlus rpm and the Instant client RPM, then hit enter to continue..."
+read someinput
+
+# Random poorly documented dependency. Classy.
+echo "Installing a poorly documented dependency."
+sudo apt-get install libaio1
+
+# Oracle only provides RPMs, but they work as .debs.
+sudo apt-get install alien
+
+# Thanks Oracle, I didn't want an apt-get repo. Really, this is nicer.
+fakeroot alien $HOME/Downloads/*.rpm
+
+# Now we actually install something from Oracle.
+dpkg -i $HOME/Downloads/*.deb
+
+# And why would it install knowing where it's own libraries are? That's just silly.
+echo "export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client/lib:$LD_LIBRARY_PATH" >> $HOME/.profile

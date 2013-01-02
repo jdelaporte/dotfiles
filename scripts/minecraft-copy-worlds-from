@@ -1,0 +1,29 @@
+#!/bin/bash
+# Quiuck script to copy the remote map files to my local computer.
+
+# Uncomment the following for the first run, if you're on Ubuntu:
+# sudo apt-get install rsync
+
+# Do the backup.
+mkdir ~/minecraft_worlds
+
+#rsync --recursive --verbose \
+#  --exclude "*.log" \
+#  --exclude "*.png" \
+#	$1:~/survival_server/* ~/minecraft_worlds/survival
+
+rsync --recursive --verbose \
+  --exclude "*.log" \
+  --exclude "*.png" \
+	$1:/media/sdb/minecraft/prerelease_server/* ~/minecraft_worlds/prerelease
+
+rsync --recursive --verbose \
+  --exclude "*.log" \
+  --exclude "*.png" \
+	$1:/media/sdb/minecraft/merged/* ~/minecraft_worlds/badmerge
+
+
+# rsync --recursive --verbose \
+#j  --exclude "*.log" \
+#  --exclude "*.png" \
+#	$1:~/creative_server/* ~/minecraft_worlds/creative

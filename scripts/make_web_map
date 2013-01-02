@@ -1,0 +1,13 @@
+#!/bin/bash
+# Author: Edward EdTheDev Delaporte 2012
+
+# Comma separated:
+#  friendly name - for URL and download file.
+#  path to the world
+#  the name of the world folder, again.
+
+echo "Making web map: $1"
+echo "Using source at $2"
+overviewer.py $2 $3/$1
+# overviewer.py --config=/home/minecraft/edthedev/minecraft/overviewer_config 
+echo "Created $1 map at $3/$1"

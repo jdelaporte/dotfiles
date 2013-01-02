@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/unison ratchet-springer -auto -ui text &> unison.log

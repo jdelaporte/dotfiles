@@ -1,0 +1,9 @@
+#!/bin/bash
+sudo apt-get install gcompris
+sudo apt-get install TuxPaint
+sudo apt-get install Childsplay
+sudo apt-get inatall Etoys
+sudo apt-get install SuperTux
+sudo apt-get install TuxTyping
+sudo apt-get install Atomix
+sudo apt-get install TuxOfMathCommand

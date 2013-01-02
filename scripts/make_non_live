@@ -1,0 +1,18 @@
+#!/bin/bash
+# Author: Edward EdTheDev Delaporte 2012
+
+#  friendly name - for URL and download file.
+#  path to the world
+
+export NON_LIVE_DIR="$3"
+
+echo "Making non-live directory for $1."
+mkdir $NON_LIVE_DIR/$1
+mkdir $NON_LIVE_DIR/$1_the_end
+mkdir $NON_LIVE_DIR/$1_nether
+
+echo "Making non-live backup of $1"
+rsync --times --recursive --verbose $2/* $NON_LIVE_DIR/$1 
+rsync --times --recursive --verbose $2_nether/* $NON_LIVE_DIR/$1_nether
+rsync --times --recursive --verbose $2_the_end/* $NON_LIVE_DIR/$1_the_end
+echo "Created non-live directory for $1"

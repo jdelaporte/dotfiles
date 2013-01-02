@@ -4,6 +4,23 @@ ControlPath /tmp/ssh_mux_%h_%p_%r
 # Keep connections reconnectable for 500 seconds after closing
 # ControlPersist 500
 
+# TrailCutter
+
+Host trailcutter
+    HostName 50.81.130.161
+    Port 22
+    User edward
+
+# Ratchet
+Host ratchet
+    HostName minecraft.edthedev.com
+    User edward
+    Port 2222
+
+# BitBucket
+Host bitbucket.org
+    IdentityFile ~/.ssh/id_rsa
+
 # Jump station
 Host lilypad
 	# UIUC!
@@ -74,7 +91,10 @@ Host malware
 	User alice 
 
 # CITES
-Host lilypad.cites.uiuc.edu
+Host lilypad
+    HostName lilypad.cites.uiuc.edu
+    User delaport
+
 Host springer
 	HostName springer.edthedev.com
 	User delaport
@@ -115,6 +135,10 @@ Host minecraft
 	HostName minecraft.edthedev.com
 	Port 22
 	User minecraft 
+
+Host sydeswype
+	HostName minecraft.edthedev.com
+	User edward 
 
 Host shockwave
 	HostName shockwave.edthedev.com

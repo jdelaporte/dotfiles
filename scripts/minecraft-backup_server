@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rsync --recursive --verbose \
+	--exclude "*.log*" /home/minecraft/minecraft/* /home/minecraft/backup
+

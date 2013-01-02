@@ -1,0 +1,30 @@
+echo "Installing essentials"
+sudo yum install vim git dvtm dtach firefox 
+
+cd ~
+echo "Cloning doftiles."
+git clone git@github.com:edthedev/dotfiles.git
+cd ~/doftiles
+echo "Linking doftiles."
+python builddotfiles.py -l
+
+echo "Make Firefox tolerable."
+firefox https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/ https://addons.mozilla.org/en-US/firefox/addon/omnibar/ https://addons.mozilla.org/en-US/firefox/addon/sitelauncher/eula/148276?src=dp-btn-primary &
+
+echo "Installing additional software."
+sudo yum install keepassx pidgin
+
+echo "Enable incoming SSH"
+systemctl enable sshd.service
+system-config-firewall &
+systemctl start sshd.service
+
+echo "Download Dropbox Installer"
+firefox https://www.dropbox.com/install?os=lnx &
+
+echo "Press Enter once the Dropbox installer is downloaded."
+read whatever
+sudo rpm --install ~/Downloads/nautilus-dropbox-1.4.0-1.fedora.x86_64.rpm
+
+echo "Get yer right Java there, eh?"
+alternatives --config java
