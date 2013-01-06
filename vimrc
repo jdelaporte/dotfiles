@@ -74,6 +74,13 @@ set sidescroll=1       " Number of cols to scroll at a time
 inoremap ii <esc>
 " Or just use Ctrl+[
 
+" Abbreviations
+" ab pm Project Manager
+" ab lead Lead Developer
+" ab dev Developer
+
+" map <Leader>b :.!bible
+
 " =======================================================
 "  Update screen title
 " =======================================================
