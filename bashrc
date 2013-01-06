@@ -13,3 +13,5 @@ source ~/dotfiles/scripts/add_to_your_profile
 # For Joanna
 PATH=$PATH:$HOME/bin
 export PATH
+
+wallpaper-random
