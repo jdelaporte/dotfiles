@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Open DTVM terminal window manager 
+#   within a DTACH detachable container.
+#   Each DTACH container is named for the current second of the day.
+dtach -A /tmp/dtach`date +%S` dvtm 
