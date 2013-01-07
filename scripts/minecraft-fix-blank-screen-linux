@@ -5,8 +5,9 @@
 # backup-minecraft
 
 echo "Updating Lightweight Java Gaming Library...because Notch doesn't always."
+firefox "http://lwjgl.org/download.php" &
 echo "Please download the latest LWJGL .zip file to ~/Downloads..."
-# firefox "http://lwjgl.org/download.php"
+read whatever
 
 unzip ~/Downloads/lwj*.zip
 cd lwj*
