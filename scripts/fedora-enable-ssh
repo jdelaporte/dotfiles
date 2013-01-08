@@ -3,16 +3,24 @@
 echo "This scripts helps enable incoming SSH on Fedora."
 echo "This script is useful because there are more than the usual number of gotchas in Fedora."
 
-ROUTER_IP = "192.168.1.254"
+export ROUTER_IP = "192.168.1.254"
 
 echo "You need to set SELINUX=permissive"
 sudo vim /etc/sysconfig/selinux
 
+echo "Enabling incoming SSH"
+# sudo chkconfig sshd on
+sudo systemctl enable sshd.service
+
+echo "Remember to create an applicatino pinhole for SSH on port 22 to this system."
+# firefox $ROUTER_IP &
+
+# sudo /sbin/service sshd start &
+echo "Starting SSH Server"
+sudo /bin/systemctl start sshd.service
+
 echo "Either allow port 22, or disable the firewall."
 sudo system-config-firewall &
 
-echo "Enabling incoming SSH"
-sudo chkconfig sshd on
-
-echo "Remember to create an applicatino pinhole for SSH on port 22 to this system."
-firefox $ROUTER_IP &
+echo "Check that you are configured to use port 22."
+sudo vim /etc/ssh/sshd_config
