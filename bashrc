@@ -13,8 +13,5 @@ source ~/dotfiles/scripts/add_to_your_profile
 PATH=$PATH:$HOME/bin
 export PATH
 
-<<<<<<< HEAD
 source ~/Minion/add_to_your_profile
-=======
-wallpaper-random
->>>>>>> ad40bf3bcf7589c1920b1129994856440356e34d
+# wallpaper-random
