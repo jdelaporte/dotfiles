@@ -9,10 +9,10 @@ echo "You need to set SELINUX=permissive"
 sudo vim /etc/sysconfig/selinux
 
 echo "Either allow port 22, or disable the firewall."
-system-config-firewall &
+sudo system-config-firewall &
 
 echo "Enabling incoming SSH"
-chkconfig sshd on
+sudo chkconfig sshd on
 
 echo "Remember to create an applicatino pinhole for SSH on port 22 to this system."
 firefox $ROUTER_IP &
