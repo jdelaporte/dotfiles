@@ -1,0 +1,37 @@
+ipython on smg system
+=====================
+:date: 2013-01-07
+
+# $1 = SupportPro, for example...
+
+echo "Installing VirtualEnv"
+mkdir virtualenv
+cd virtualenv
+wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+
+echo "Creating virtual directory for $1."
+# python virtualenv.py $1 --extra-search-dir="$HOME/$1/module"
+python virtualenv.py $1 
+echo 'export PYTHONPATH=$PYTHONPATH:"$HOME/$1/module"' >> bin/activate
+echo 'export PYTHONPATH=$PYTHONPATH:"$HOME/$1/test"' >> bin/activate
+echo 'cd "$HOME/$1/module"' >> bin/activate
+# echo "$HOME/$1/module" >> 
+# lib/python2.6/$1.pth
+
+echo "Activating SupportPro virtual directory."
+exec $HOME/$1/bin/activate
+
+echo "Installing iPython"
+pip install ipython
+
+echo "Please confirm that your PYTHONPATH is correct within this virtualenv, for $1"
+python -c "import sys; print sys.path"
+
+
+cd $HOME/$1
+
+echo "Run iPython by typing 'ipython'"
+echo "Deactivate this virtualenv by typing 'deactivate'"
+ipython on smg system
+=====================
+:date: 2013-01-10
