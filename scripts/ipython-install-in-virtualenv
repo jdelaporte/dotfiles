@@ -12,8 +12,8 @@ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 echo "Creating virtual directory for $1."
 # python virtualenv.py $1 --extra-search-dir="$HOME/$1/module"
 python virtualenv.py $1 
-echo 'export PYTHONPATH=$PYTHONPATH:"$HOME/$1/module"' >> bin/activate
-echo 'export PYTHONPATH=$PYTHONPATH:"$HOME/$1/test"' >> bin/activate
+echo 'export PYTHONPATH="$HOME/$1/module":$PYTHONPATH' >> bin/activate
+echo 'export PYTHONPATH="$HOME/$1/test":$PYTHONPATH' >> bin/activate
 echo 'cd "$HOME/$1/module"' >> bin/activate
 # echo "$HOME/$1/module" >> 
 # lib/python2.6/$1.pth
