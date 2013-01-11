@@ -24,6 +24,10 @@ exec $HOME/$1/bin/activate
 echo "Installing iPython"
 pip install ipython
 
+echo "Installing Django 1.3.2"
+# Mystery: This should have been inherited from system, but was not. 
+pip install django==1.3.2
+
 echo "Please confirm that your PYTHONPATH is correct within this virtualenv, for $1"
 python -c "import sys; print sys.path"
 
