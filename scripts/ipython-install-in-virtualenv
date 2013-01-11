@@ -19,7 +19,7 @@ echo 'cd "$HOME/$1/module"' >> bin/activate
 # lib/python2.6/$1.pth
 
 echo "Activating SupportPro virtual directory."
-exec $HOME/$1/bin/activate
+exec $HOME/virtualenv/$1/bin/activate
 
 echo "Installing iPython"
 pip install ipython
