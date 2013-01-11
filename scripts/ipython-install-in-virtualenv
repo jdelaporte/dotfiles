@@ -1,6 +1,4 @@
-ipython on smg system
-=====================
-:date: 2013-01-07
+#!/bin/bash
 
 # $1 = SupportPro, for example...
 
@@ -12,30 +10,35 @@ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 echo "Creating virtual directory for $1."
 # python virtualenv.py $1 --extra-search-dir="$HOME/$1/module"
 python virtualenv.py $1 
-echo 'export PYTHONPATH="$HOME/$1/module":$PYTHONPATH' >> bin/activate
-echo 'export PYTHONPATH="$HOME/$1/test":$PYTHONPATH' >> bin/activate
-echo 'cd "$HOME/$1/module"' >> bin/activate
+CHANGE_PATH='export PYTHONPATH=$PYTHONPATH:'
+CHANGE_PATH+="'$HOME/$1/module'"
+echo $CHANGE_PATH >> $HOME/virtualenv/$1/bin/activate
+
+CHANGE_PATH='export PYTHONPATH=$PYTHONPATH:'
+CHANGE_PATH+="'$HOME/$1/test'"
+echo $CHANGE_PATH >> $HOME/virtualenv/$1/bin/activate
+
+# echo 'export PYTHONPATH=$PYTHONPATH:' . "'$HOME/$1/module'" >> $HOME/virtualenv/$1/bin/activate
+# echo 'export PYTHONPATH=$PYTHONPATH:' . "'$HOME/$1/test'" >> $HOME/virtualenv/$1/bin/activate
+
+CHANGE_WD="cd '$HOME/$1/module'"
+echo $CHANGE_WD >> $HOME/virtualenv/$1/bin/activate
+
+# echo "cd '$HOME/$1/module'" >> $HOME/virtualenv/$1/bin/activate
 # echo "$HOME/$1/module" >> 
 # lib/python2.6/$1.pth
 
 echo "Activating SupportPro virtual directory."
-exec $HOME/virtualenv/$1/bin/activate
+# chmod +x $HOME/virtualenv/$1/bin/activate
+source $HOME/virtualenv/$1/bin/activate
 
 echo "Installing iPython"
 pip install ipython
 
-echo "Installing Django 1.3.2"
-# Mystery: This should have been inherited from system, but was not. 
-pip install django==1.3.2
-
 echo "Please confirm that your PYTHONPATH is correct within this virtualenv, for $1"
 python -c "import sys; print sys.path"
 
-
-cd $HOME/$1
+# cd $HOME/$1
 
 echo "Run iPython by typing 'ipython'"
 echo "Deactivate this virtualenv by typing 'deactivate'"
-ipython on smg system
-=====================
-:date: 2013-01-10
