@@ -62,6 +62,10 @@ def localizeForHostName(filename):
     return updated_filename.strip('-')
   return filename
 
+# TODO: symlinkdirectory
+#  (mainly for .ssh)
+
+
 def symlinkFile(source, dest):
   try:
       os.unlink(dest)

@@ -25,9 +25,7 @@ rsync $HOME/* --recursive --progress \
     --exclude "*.svn*" \
     --exclude ".thumbnails" \
     --exclude "NoBackup" \
-    --exclude "Calibre Library" \
     --exclude "Music" \
-    --exclude "Books" \
     --exclude "$HOME/.*" \
     $1:$HOME
 
