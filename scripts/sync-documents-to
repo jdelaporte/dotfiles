@@ -28,6 +28,7 @@ rsync $HOME/* --recursive --progress \
     --exclude "Calibre Library" \
     --exclude "Music" \
     --exclude "Books" \
+    --exclude "Pictures" \
     --exclude "$HOME/.*" \
     $1:$HOME
 
