@@ -5,8 +5,10 @@ read passwd
 stty echo     # Restores screen echo.
 echo
 echo
+echo "Added .dropbox-password file."
+echo $passwd > ~/.dropbox-password
 
-for file in `find ./ -type 'f'|grep -v -E "\.crypted$"`;
+for file in `find ~/Dropbox/ -type 'f'|grep -v -E "\.crypted$"`;
     do
         dest="${file}.crypted"
         if [ "$dest" != "$file" ]; then
