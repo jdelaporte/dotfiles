@@ -1,0 +1,29 @@
+#!/bin/bash
+stty -echo
+echo -n "Enter your password: "
+read passwd
+stty echo     # Restores screen echo.
+echo
+echo
+
+for file in `find ./ -type 'f'|grep -v -E "\.crypted$"`;
+    do
+        dest="${file}.crypted"
+        if [ "$dest" != "$file" ]; then
+            echo -n "Crypting $file to $dest... "
+            if ( cat "$file"|mcrypt -q -k $passwd > "$dest" ); then
+                echo " OK!"
+                echo " Deleting $file"
+                if ( rm -f "$file" ); then
+                    echo "OK!"
+                else
+                    echo "Error!"
+                fi
+            else
+                echo " Error!"
+            fi
+        else
+            echo "$file is crypted!"
+        fi
+    done
+
