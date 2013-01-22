@@ -4,6 +4,10 @@ echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
 sudo apt-get install vim git dtach dvtm mcrypt keepassx dropbox xclip python
+
+echo "You may accidentally edit a file in a few moments. Set your editor."
+sudo update-alternatives –config editor
+
 echo "Generate your SSH keys"
 ssh keygen
 
