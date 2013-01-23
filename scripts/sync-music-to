@@ -1,0 +1,33 @@
+#!/bin/bash
+
+mkdir $HOME/Pictures
+mkdir $HOME/Pictures/minecraft
+mv $HOME/.minecraft/screenshots/* $HOME/Pictures/minecraft
+
+echo "Copying all non-temporary files from $HOME to $1:$HOME"
+rsync $HOME/* --recursive --progress \
+    --exclude ".adobe" \
+    --exclude ".Apache*" \
+    --exclude ".cache" \
+    --exclude ".config" \
+    --exclude "Downloads" \
+    --exclude ".dropbox-dist" \
+    --exclude "*.dropbox*" \
+    --exclude "Dropbox" \
+    --exclude "*.git*" \
+    --exclude "*.hg*" \
+    --exclude "install" \
+    --exclude "installer" \
+    --exclude ".local" \
+    --exclude ".minecraft" \
+    --exclude ".mozilla" \
+    --exclude ".shotwell" \
+    --exclude "*.svn*" \
+    --exclude ".thumbnails" \
+    --exclude "NoBackup" \
+    --exclude "Calibre Library" \
+    --exclude "Books" \
+    --exclude "AudioBooks" \
+    --exclude "$HOME/.*" \
+    $1:$HOME
+

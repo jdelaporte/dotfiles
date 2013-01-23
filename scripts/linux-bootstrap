@@ -28,3 +28,7 @@ sudo rpm --install ~/Downloads/nautilus-dropbox-1.4.0-1.fedora.x86_64.rpm
 
 echo "Get yer right Java there, eh?"
 alternatives --config java
+
+echo "Fetching EasyLife"
+firefox http://sourceforge.net/projects/easylife-linux/?source=dlp &
+
