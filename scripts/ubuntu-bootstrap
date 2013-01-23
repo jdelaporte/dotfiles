@@ -5,11 +5,6 @@ echo "Ubuntu Bootstrap Script by EdTheDev"
 echo "Installing basic survival packages."
 sudo apt-get install vim git dtach dvtm mcrypt keepassx nautilus-dropbox xclip python firefox
 
-echo "You may accidentally edit a file in a few moments. Set your editor."
-sudo update-alternatives –config editor
-echo "You may use the Internet in a few moments. Set your browser."
-sudo update-alternatives –config x-www-browser
-
 echo "Generate your SSH keys"
 ssh keygen
 
@@ -23,10 +18,17 @@ firefox https://github.com/login
 echo "Cloning your dotfiles to this host."
 git clone git@github.com:edthedev/dotfiles.git
 
-echo "Binding your dotfiles."
-echo "Run this command to bind your dotfiles:"
-echo "python ~/dotfiles/builddotfiles.py -l"
-
 echo "Cloning the Minion project."
 git clone git@github.com:edthedev/Minion.git
+
+echo "Set your timezone."
+sudo dpkg-reconfigure tzdata
+
+echo "You may edit a file in a few moments. Set your editor."
+sudo update-alternatives –config editor
+echo "You may use the Internet in a few moments. Set your browser."
+sudo update-alternatives –config x-www-browser
+
+echo "Run this command to bind your dotfiles:"
+echo "python ~/dotfiles/builddotfiles.py -l"
 
