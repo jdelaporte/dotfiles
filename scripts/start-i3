@@ -1,0 +1,1 @@
+killall openbox && i3 &
