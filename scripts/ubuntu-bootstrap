@@ -3,7 +3,7 @@
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
-sudo apt-get install vim git dtach dvtm mcrypt keepassx nautilus-dropbox xclip python firefox
+sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox
 
 echo "Generate your SSH keys"
 ssh keygen
@@ -14,6 +14,9 @@ echo "Copied your Public Key to the clipboard."
 echo "Paste your new SSH key into your GitHub account."
 hostname
 firefox https://github.com/login
+
+echo "Download and install Dropbox."
+firefox https://www.dropbox.com/install
 
 echo "Cloning your dotfiles to this host."
 git clone git@github.com:edthedev/dotfiles.git
