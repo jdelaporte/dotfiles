@@ -1,2 +1,2 @@
-sudo apt-get install python-sphinx python-docutil
+sudo apt-get install make python-sphinx python-docutil
 sudo pip install hieroglpyh
