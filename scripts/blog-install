@@ -1,0 +1,2 @@
+sudo apt-get install python-sphinx python-docutil
+sudo pip install hieroglpyh
