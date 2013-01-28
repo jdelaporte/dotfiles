@@ -1,11 +1,7 @@
 #!/bin/bash
 
-mkdir $HOME/Pictures
-mkdir $HOME/Pictures/minecraft
-mv $HOME/.minecraft/screenshots/* $HOME/Pictures/minecraft
-
-echo "Copying all non-temporary files from $HOME to $1:$HOME"
-rsync $HOME/* --recursive --progress \
+echo "Copying all non-temporary documents from $HOME/Documents/ to $1/Documents"
+rsync $HOME/Documents/* --recursive --progress \
     --exclude ".adobe" \
     --exclude ".Apache*" \
     --exclude ".cache" \
@@ -30,5 +26,5 @@ rsync $HOME/* --recursive --progress \
     --exclude "Books" \
     --exclude "Pictures" \
     --exclude "$HOME/.*" \
-    $1:$HOME
+    $1/Documents
 

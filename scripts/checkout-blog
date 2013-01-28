@@ -1,0 +1,10 @@
+#!/bin/bash
+xclip -sel clip < ~/.ssh/id_rsa.pub
+echo "Copied your Public Key to the clipboard."
+
+echo "Paste your new SSH key into your BitBucket account."
+hostname
+firefox https://bitbucket.org/account/user/edthedev/ssh-keys/
+
+echo "Cloning blog."
+git clone git@bitbucket.org:edthedev/blog.git
