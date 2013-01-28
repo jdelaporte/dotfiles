@@ -1,2 +1,6 @@
-sudo apt-get install make python-sphinx python-docutil
-sudo pip install hieroglpyh
+sudo apt-get install make python python-sphinx python-docutil pip
+sudo pip install pelican hieroglpyh
+
+blog-git-clone
+
+mkdir ~/blog/output
