@@ -37,22 +37,22 @@ ${font :bold:size=8}${time %A}
 
 ${color Tan1}Work ${color LightBlue}$stippled_hr
 
-${execi 10 /home/delaport/Minion/minion --list --silent --directory /home/delaport/Dropbox/notes/today} 
-${execi 60 /home/delaport/Minion/minion --silent --count --directory /home/delaport/Dropbox/notes/inbox }
-# ${execi 60 /home/delaport/Minion/minion --count --directory /home/delaport/Dropbox/notes/today }
-${execi 60 /home/delaport/Minion/minion --count --directory /home/delaport/Dropbox/notes urgent }
-${execi 60 /home/delaport/Minion/minion --count --directory /home/delaport/Dropbox/notes/next}
+${execi 10 /home/delaport/Minion/minion list today } 
+${execi 60 /home/delaport/Minion/minion count inbox }
+# ${execi 60 /home/delaport/Minion/minion count today }
+${execi 60 /home/delaport/Minion/minion count urgent }
+${execi 60 /home/delaport/Minion/minion count next}
 
-# ${execi 60 /home/delaport/Minion/minion --count --directory /home/delaport/Dropbox/notes/soon }
-${execi 60 /home/delaport/Minion/minion --count --directory /home/delaport/Dropbox/notes important}
-${execi 60 /home/delaport/Minion/minion --count --directory /home/delaport/Dropbox/notes/waiting }
+# ${execi 60 /home/delaport/Minion/minion count soon }
+${execi 60 /home/delaport/Minion/minion count important}
+${execi 60 /home/delaport/Minion/minion count waiting }
 
 # Hours worked: ${execi 1800 /home/delaport/edthedev/text/hours_since_morning}
 
 
 ${font Arial:bold:size=10}${color Tan1}Calendar${color LightBlue}${hr 2}
 ${font terminus:size=10}
-${execi 1800 cal -1}
+${execi 1800 cal }
 
 ${font Arial:bold:size=10}${color Tan2}NETWORK ${color LightBlue}${hr 2}
 $font${color DimGray}eth0 - ${addr eth0} $alignr ${downspeed eth0} kb/s

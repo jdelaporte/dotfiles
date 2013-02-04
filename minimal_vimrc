@@ -10,7 +10,8 @@
 let mapleader=","
 
 " SpellCheck
-se spell
+" se spell
+set nospell
 
 " Needed for NERDCommenter:
 "   provides fast easy commenting/uncommenting
