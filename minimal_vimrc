@@ -9,14 +9,6 @@
 " -----------------------------------------------------------------------
 let mapleader=","
 
-" No SpellCheck by default.
-set nospell
-
-" Needed for NERDCommenter:
-"   provides fast easy commenting/uncommenting
-"   using Leader+cc
-" filetype plugin on
-
 " Allow switching buffers without closing files.
 set hidden
 
@@ -29,7 +21,8 @@ inoremap ii <esc>
 "   Common Coding Commands
 " =======================================================
 " Keep the code PEP8 compliant.
-map <F2> :redir => l | silent !pylint %:r.py | redir END | :e /tmp/pylint.txt | put=l
+" map <F2> :!pylint %:r.py > /tmp/pylint.txt | :e /tmp/pylint.txt 
+map <F2> :e /tmp/pylint.txt <bar> :read !pylint %:r.py 
 " Check in all the things!!
 map <F3> :!svn ci %:r.*
 " Install!
@@ -40,6 +33,17 @@ map <F5> :!python %:r.py
 map <F6> :!make html 
 " Run!
 map <F10> :!%
+
+" No SpellCheck by default.
+set nospell
+
+" Needed for NERDCommenter:
+"   provides fast easy commenting/uncommenting
+"   using Leader+cc
+" filetype plugin on
+
+
+
 
 " =======================================================
 "  Update screen title
