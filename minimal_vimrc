@@ -21,8 +21,11 @@ inoremap ii <esc>
 "   Common Coding Commands
 " =======================================================
 " Keep the code PEP8 compliant.
-" map <F2> :!pylint %:r.py > /tmp/pylint.txt | :e /tmp/pylint.txt 
-map <F2> :e /tmp/pylint.txt <bar> :read !pylint %:r.py 
+" map <F2> :!pylint %:r.py > /tmp/pylint.txt <bar> :e /tmp/pylint.txt 
+" map <F2> :e /tmp/pylint.txt <bar> :read !pylint %:r.py 
+
+map <F2> :e %:r.pylint <bar> :read !pylint %:r.py
+
 " Check in all the things!!
 map <F3> :!svn ci %:r.*
 " Install!
