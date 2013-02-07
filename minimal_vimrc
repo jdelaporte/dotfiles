@@ -9,8 +9,7 @@
 " -----------------------------------------------------------------------
 let mapleader=","
 
-" SpellCheck
-" se spell
+" No SpellCheck by default.
 set nospell
 
 " Needed for NERDCommenter:
@@ -24,15 +23,23 @@ set hidden
 " =======================================================
 " iPad and Android keyboards have no ESC Key
 " =======================================================
-" These are two slow..
-"inoremap kj <Esc>
-"inoremap jj <Esc>
-"imap jj <Esc>
-" map jk <esc>
-" noremap ,e <esc>
-" :imap ;; <esc>
-" Just use Ctrl+[
 inoremap ii <esc>
+
+" =======================================================
+"   Common Coding Commands
+" =======================================================
+" Keep the code PEP8 compliant.
+map <F2> :redir => l | silent !pylint %:r.py | redir END | :e /tmp/pylint.txt | put=l
+" Check in all the things!!
+map <F3> :!svn ci %:r.*
+" Install!
+map <F4> :!make install
+" Run!
+map <F5> :!python %:r.py
+" HTML!
+map <F6> :!make html 
+" Run!
+map <F10> :!%
 
 " =======================================================
 "  Update screen title
@@ -45,6 +52,16 @@ endif
 if &term == "screen" || &term == "xterm"
 	set title
 endif
+
+" Some generally useful settings
+" -----------------------------------------------------------------------
+set hidden " Allow switching buffers without closing files.
+set nocompatible "Do not emulate old bugs
+set lbr "don't wrap in the default, utterly stupid way.
+filetype on " Detect file types
+syntax enable  " Highlight syntax
+set vb t_vb= "Flash instead of beep.
+set ruler
 
 " =======================================================
 "  Text documents
@@ -69,8 +86,36 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+"   Do not leave backups in random locations. 
+" -----------------------------------------------------------------------
+" Put backup and swap files into .backup in current directory if it exists.
+"   Otherwise drop them in the system temporary directory.
+set backupdir=./.backup,/tmp
+set directory=./.backup,/tmp
+
+
+" Draw a nice line under the current line.
+hi CursorLine guibg=#2d2d2d
+
+" Keep the cursor near the center of the screen.
+"-----------------------------------------------------------------------
+set scrolloff=8         " Number of lines from vertical edge to start scrolling
+set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
+set sidescroll=1       " Number of cols to scroll at a time
+
 " Shared Clipboard
 " set clipboard=unnamed
+
+"   Indentation is great.
+"-----------------------------------------------------------------------
+" set smartindent
+" filetype indent on
+
+" When working from a thumb drive - backup causes severe slowdowns.
+" set nobackup
+
+" Quickly modify the vimrc
+" :map <Leader>sv :so $HOME/.vimrc<Cr>
 
 " Do not show line numbers
 set nonumber

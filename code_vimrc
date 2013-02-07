@@ -1,11 +1,7 @@
 
-" Run the python!!!
-map <F5> :!python %:r.py
-
 " Check in
 " map <F3> :!hg ci %:r.*
 " map <F3> :!git ci %:r.*
-map <F3> :!svn ci %:r.*
 
 " Auto-complete 
 " Ctrl+X, Ctrl+P - complete from within current file.
