@@ -1,0 +1,2 @@
+mv $1 $HOME/blog/content/inbox
+{cd $HOME/blog/content;bash}

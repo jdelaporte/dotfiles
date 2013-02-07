@@ -1,0 +1,7 @@
+git add ~/blog/content/Journal/*
+git add ~/blog/content/Vim/*
+git add ~/blog/content/Coding/*/*
+git add ~/blog/content/About/*
+
+git commit -a -m 'Adding recent entries'
+git push
