@@ -1,0 +1,10 @@
+#!/usr/bin/python
+
+# @author Edward Delaporte, http://edthedev.com
+import os
+import random
+
+directory = os.path.expanduser(args[1])
+files = os.listdir(directory)
+picture_filename = os.path.join(dir, file)
+print picture_filename 

@@ -78,6 +78,10 @@ $font${color DimGray}MEM $alignc $mem / $memmax $alignr $memperc%
 $membar
 ${color Tan2}${font :bold:size=10}Uptime ${color LightBlue}${uptime}
 
+${execi 600 conky-slideshow /home/delaport/Pictures/slideshow/slideshow}
+${image /home/delaport/Pictures/slideshow/slideshow/current.png}
+
+
 # ${font Arial:bold:size=10}${color Tan1}HDD ${color LightBlue}${hr 2}
 # $font${color DimGray}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
 # ${fs_bar /home}

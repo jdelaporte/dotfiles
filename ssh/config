@@ -4,6 +4,11 @@ ControlPath /tmp/ssh_mux_%h_%p_%r
 # Keep connections reconnectable for 500 seconds after closing
 # ControlPersist 500
 
+# IC2G space request
+Host spacereq
+    HostName spacereq-dev.cites.illinois.edu
+    User delaport
+
 # TrailCutter
 
 Host trailcutter

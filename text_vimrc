@@ -3,6 +3,9 @@
 " 	Act as much like Microsoft Word as is reasonable.
 " =======================================================
 
+" GVim defaults to 10 point font, which makes my eyes sad.
+set guifont=Monospace\ 12
+
 " SpellCheck
 " se spell
 
