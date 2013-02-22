@@ -4,7 +4,7 @@
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
-sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox i3
+sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server
 
 echo "You may use the Internet in a few moments. Set your browser."
 read -p "Press Enter when ready."
@@ -53,5 +53,7 @@ firefox https://addons.mozilla.org/en-us/firefox/addon/vimperator/
 firefox https://addons.mozilla.org/en-US/firefox/addon/web-developer/?redirectlocale=en-US&redirectslug=Web_Developer_Extension_%28external%29
 firefox https://addons.mozilla.org/en-US/firefox/addon/wot-safe-browsing-tool/
 firefox https://addons.mozilla.org/en-us/firefox/addon/sitelauncher/
+firefox https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/
 
-
+echo "Change the SSH Port, if you wish."
+sudo vim /etc/ssh/sshd_config
