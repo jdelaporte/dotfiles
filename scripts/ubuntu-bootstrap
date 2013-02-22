@@ -46,3 +46,12 @@ sudo dpkg --install ~/Downloads/dropbox*.deb
 echo "You may edit a file in a few moments. Set your editor."
 read -p "Press Enter when ready."
 sudo update-alternatives --config editor
+
+echo "Lets install some Firefox plugins"
+firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/
+firefox https://addons.mozilla.org/en-us/firefox/addon/vimperator/
+firefox https://addons.mozilla.org/en-US/firefox/addon/web-developer/?redirectlocale=en-US&redirectslug=Web_Developer_Extension_%28external%29
+firefox https://addons.mozilla.org/en-US/firefox/addon/wot-safe-browsing-tool/
+firefox https://addons.mozilla.org/en-us/firefox/addon/sitelauncher/
+
+
