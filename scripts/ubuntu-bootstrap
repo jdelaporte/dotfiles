@@ -4,7 +4,7 @@
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
-sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox
+sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox i3
 
 echo "You may use the Internet in a few moments. Set your browser."
 read -p "Press Enter when ready."
