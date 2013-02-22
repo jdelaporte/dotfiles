@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 echo "Ubuntu Bootstrap Script by EdTheDev"
@@ -6,17 +7,16 @@ echo "Installing basic survival packages."
 sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox
 
 echo "Generate your SSH keys"
-ssh keygen
+ssh-keygen
 
 xclip -sel clip < ~/.ssh/id_rsa.pub
 echo "Copied your Public Key to the clipboard."
 
+echo "About to pull your Git repos."
 echo "Paste your new SSH key into your GitHub account."
+firefox https://github.com/settings/ssh
 hostname
-firefox https://github.com/login
-
-echo "Download and install Dropbox."
-firefox https://www.dropbox.com/install
+read -p "Press Enter after installing your Key to GitHub. It is in your clipboard." -e input
 
 echo "Cloning your dotfiles to this host."
 git clone git@github.com:edthedev/dotfiles.git
@@ -35,3 +35,10 @@ sudo update-alternatives –config x-www-browser
 echo "Run this command to bind your dotfiles:"
 echo "python ~/dotfiles/builddotfiles.py -l"
 
+echo "Download and install Dropbox."
+firefox https://www.dropbox.com/install
+
+echo "About to install Dropbox."
+read -p "Press enter after you have downloaded Dropbox." -e input
+
+sudo dpkg --install ~/Downloads/dropbox*.deb
