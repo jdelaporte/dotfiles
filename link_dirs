@@ -1,3 +1,6 @@
-ln -s ssh ~/.ssh
-ln -s i3 ~/.i3
-ln -s vim ~/.vim
+mv ~/.ssh ~/ssh_orig 
+ln -s ~/dotfiles/ssh ~/.ssh
+cp ~/ssh_orig/* ~/.ssh/ -R
+
+ln -s ~/dotfiles/i3 ~/.i3
+ln -s ~/dotfiles/vim ~/.vim
