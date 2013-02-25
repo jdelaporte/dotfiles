@@ -2,7 +2,10 @@
 "
 "       EdTheDev's Minimal .vimrc 
 "
+"          Like a normal Vimrc, but with no plugins.
 " -------------------------------------------------------
+
+
 
 " -----------------------------------------------------------------------
 " Let the leader key be ,  
