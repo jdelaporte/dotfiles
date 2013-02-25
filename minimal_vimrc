@@ -5,20 +5,181 @@
 "          Like a normal Vimrc, but with no plugins.
 " -------------------------------------------------------
 
+" =======================================================
+"  1 important
+" =======================================================
+set nocompatible "Don't emulate old vi bugs.
+" =======================================================
+"  2 moving around, searching and patterns
+" =======================================================
+
+set ignorecase " Case insensitive search
+set incsearch "Search as I type
+
+nmap H ^  
+nmap L $ 
 
 
-" -----------------------------------------------------------------------
-" Let the leader key be ,  
-" -----------------------------------------------------------------------
-let mapleader=","
+" =======================================================
+"  3 tags
+" =======================================================
+" =======================================================
+"  4 displaying text
+" =======================================================
+
+set scrolloff=8         " Number of lines from vertical edge to start scrolling
+set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
+set sidescroll=1       " Number of cols to scroll at a time
+
+set cursorline " Underline the line that the curson is on
+hi CursorLine guibg=#2d2d2d
+
+set ruler
+" set textwidth=8000
+set vb t_vb= "Flash instead of beep.
+
+set laststatus=2
+set statusline=
+set statusline +=%1*
+set statusline +=b%n            "buffer number
+set statusline +=\  
+set statusline +=%F%m%r%h%w
+set statusline +=\  
+set statusline +=%l\/%L          
+set statusline +=%4v              "virtual column number
+set statusline +=%1*                     " return to background c
+
+
+" =======================================================
+"  5 syntax, highlighting and spelling
+" =======================================================
+syntax enable 
+" Recognize some file types...
+au BufNewFile,BufRead *.txt set filetype=txt
+" au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
+
+filetype on " Enable file type detection
+
+
+" =======================================================
+"  6 multiple windows
+" =======================================================
 
 " Allow switching buffers without closing files.
 set hidden
 
 " =======================================================
-" iPad and Android keyboards have no ESC Key
+"  7 multiple tab pages
 " =======================================================
+" =======================================================
+"  8 terminal
+" =======================================================
+" =======================================================
+"  9 using the mouse
+" =======================================================
+" =======================================================
+" 10 printing
+" =======================================================
+" =======================================================
+" 11 messages and info
+" =======================================================
+" =======================================================
+" 12 selecting text
+" =======================================================
+
+" Re-select visual block after indent/outdent.
+vnoremap < <gv
+vnoremap > >gv
+
+" =======================================================
+" 13 editing text
+" =======================================================
+
+" Make backspace work like most other apps.
+set backspace=indent,eol,start
+
+"Parenthesis matching.
+set showmatch 
+
+" =======================================================
+" 14 tabs and indenting
+" =======================================================
+" Indentation is great.
+set smartindent
+filetype indent on
+
+" =======================================================
+" 15 folding
+" =======================================================
+" =======================================================
+" 16 diff mode
+" =======================================================
+" =======================================================
+" 17 mapping
+" =======================================================
+
+" iPad and Android keyboards have no ESC Key
 inoremap ii <esc>
+" Tired of typing :Wq
+cnoreabbrev W w
+
+
+
+" =======================================================
+" 18 reading and writing files
+" =======================================================
+" =======================================================
+" 19 the swap file
+" =======================================================
+"   Do not leave backups in random locations. 
+set backupdir=./.backup,/tmp
+set directory=./.backup,/tmp
+
+" =======================================================
+" 20 command line editing
+" =======================================================
+" =======================================================
+" 21 executing external commands
+" =======================================================
+
+" Let the leader key be ,  
+let mapleader=","
+" ex mode commands made easy
+nnoremap ; :
+
+" :map <Leader>pc :!check-script %:p:h/%<Cr>
+:map <Leader>pc :!hg ci%<Cr>
+:map <Leader>pd :!pydoc %:r<Cr>
+:map <Leader>pe :!tail /var/log/apache2/error.log
+:map <Leader>ph :!check-script --html %<Cr>
+:map <Leader>pm :!listmethods %<Cr>
+" :map <Leader>pl :!pylib 
+:map <Leader>pl :!pylint % > /tmp/out.txt<Cr>:e /tmp/out.txt<Cr>
+:map <Leader>pn :set nu!
+" :map <Leader>pr :!sudo /etc/init.d/apache2 restart<Cr>
+
+" :map <Leader>pv :!w3m http://192.168.1.9/scripts<Cr> 
+:map <Leader>pr :!python % 
+
+" Sort lines!!
+:map <Leader>ss :'<,'> !sort<Cr>
+
+
+
+" =======================================================
+" 22 running make and jumping to errors
+" =======================================================
+" =======================================================
+" 23 language specific
+" =======================================================
+" =======================================================
+" 24 multi-byte characters
+" =======================================================
+" =======================================================
+" 25 various
+" =======================================================
+
+
 
 " =======================================================
 "   Common Coding Commands
@@ -96,13 +257,6 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-"   Do not leave backups in random locations. 
-" -----------------------------------------------------------------------
-" Put backup and swap files into .backup in current directory if it exists.
-"   Otherwise drop them in the system temporary directory.
-set backupdir=./.backup,/tmp
-set directory=./.backup,/tmp
-
 
 " Draw a nice line under the current line.
 hi CursorLine guibg=#2d2d2d
@@ -175,136 +329,10 @@ au BufWinEnter *.py let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
 au FileType python let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 au BufWinEnter *.py let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
-" =======================================================
-
-"    Status Line
-" -----------------------------------------------------------------
-"
-" A nice status line.
-" set statusline=%F%m%r%h%w\ [type=%Y]\ [%p%%]\ [len=%L]
-" set laststatus=2 " Always show the statusline on the 2nd last row
-
-
-" automatically reload vimrc when it's saved
-" au BufWritePost .vimrc so ~/.vimrc
-
-set laststatus=2
-set statusline=
-set statusline +=%1*
-set statusline +=b%n            "buffer number
-set statusline +=\  
-set statusline +=%F%m%r%h%w
-set statusline +=\  
-set statusline +=%l\/%L          
-set statusline +=%4v              "virtual column number
-set statusline +=%1*                     " return to background color
-" set statusline +=%2*%m%*                "modified flag
-" set statusline+=%{rvm#statusline()}  
-" set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
-" set statusline+=%{fugitive#statusline()}\    
-" set statusline +=%5*%{&ff}%*            "file format
-" set statusline +=%3*%y%*                "file type
-" set statusline +=%2*0x%04B\ %*          "character under cursor
-
-" Orphaned setting
-filetype on
-
-" Sort lines!!
-:map <Leader>ss :'<,'> !sort<Cr>
-
-" -----------------------------------------------------------------------
-"
-"   " Some Python specific stuff
-"
-" -----------------------------------------------------------------------
-" :map <Leader>pc :!check-script %:p:h/%<Cr>
-:map <Leader>pc :!hg ci%<Cr>
-:map <Leader>pd :!pydoc %:r<Cr>
-:map <Leader>pe :!tail /var/log/apache2/error.log
-:map <Leader>ph :!check-script --html %<Cr>
-:map <Leader>pm :!listmethods %<Cr>
-" :map <Leader>pl :!pylib 
-:map <Leader>pl :!pylint % > /tmp/out.txt<Cr>:e /tmp/out.txt<Cr>
-:map <Leader>pn :set nu!
-" :map <Leader>pr :!sudo /etc/init.d/apache2 restart<Cr>
-
-" :map <Leader>pv :!w3m http://192.168.1.9/scripts<Cr> 
-:map <Leader>pr :!python % 
-
-" ex mode commands made easy
-nnoremap ; :
-
-" Go to home and end using capitalized directions
-noremap H ^
-noremap L $
-
-set scrolloff=8         " Number of lines from vertical edge to start scrolling
-set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
-set sidescroll=1       " Number of cols to scroll at a time
-
 " Force period and parens to deliniate words
 " set iskeyword-=\.
 " set iskeyword-=\(
 " set iskeyword-=\)
+" set iskeyword-=\_
 
-
-"   Suck less at Backups.
-" -----------------------------------------------------------------------
-" Put backup and swap files into .backup in current directory if it exists.
-"   Otherwise drop them in the system temporary directory.
-set backupdir=./.backup,/tmp
-set directory=./.backup,/tmp
-
-" 	Appearance   
-" -----------------------------------------------------------------------
-
-set cursorline
-hi CursorLine guibg=#2d2d2d
-set ruler
-" set textwidth=8000
-set vb t_vb= "Flash instead of beep.
-" 	Editing
-" -----------------------------------------------------------------------
-"
-"
-" Tired of typing :Wq
-cnoreabbrev W w
-
-" :map <Leader>h ^
-" map <Leader>. $
-" Make backspace work like most other apps.
-" set backspace=2 " make backspace work like most other apps
-set backspace=indent,eol,start
-
-set ignorecase
-set nocompatible "Don't emulate old vi bugs.
-set showmatch "Parenthesis matching.
-"set pastetoggle=<C-P> " Ctrl-P toggles paste mode
-"set paste "Don't suck at pasting in text.
-" set foldmethod=marker -- breaks on some systems
-set incsearch "Search as I type
-nmap H ^ 
-nmap L $ 
-
-" =======================================================
-" Editing with Tabs
-" =======================================================
-
-"   Indentation is great.
-"-----------------------------------------------------------------------
-set smartindent
-filetype indent on
-
-" Re-select visual block after indent/outdent.
-vnoremap < <gv
-vnoremap > >gv
-
-" =======================================================
-" Highlighting
-" =======================================================
-
-syntax enable 
-" Recognize some file types...
-au BufNewFile,BufRead *.txt set filetype=txt
-" au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 
