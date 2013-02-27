@@ -1,22 +1,26 @@
+
 #!/bin/bash
 
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
-sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox
+sudo apt-get install vim git dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky
+
+echo "You may use the Internet in a few moments. Set your browser."
+read -p "Press Enter when ready."
+sudo update-alternatives --config x-www-browser
 
 echo "Generate your SSH keys"
-ssh keygen
+ssh-keygen
 
 xclip -sel clip < ~/.ssh/id_rsa.pub
 echo "Copied your Public Key to the clipboard."
 
+echo "About to pull your Git repos."
 echo "Paste your new SSH key into your GitHub account."
+firefox https://github.com/settings/ssh
 hostname
-firefox https://github.com/login
-
-echo "Download and install Dropbox."
-firefox https://www.dropbox.com/install
+read -p "Press Enter after installing your Key to GitHub. It is in your clipboard." -e input
 
 echo "Cloning your dotfiles to this host."
 git clone git@github.com:edthedev/dotfiles.git
@@ -27,11 +31,29 @@ git clone git@github.com:edthedev/Minion.git
 echo "Set your timezone."
 sudo dpkg-reconfigure tzdata
 
-echo "You may edit a file in a few moments. Set your editor."
-sudo update-alternatives –config editor
-echo "You may use the Internet in a few moments. Set your browser."
-sudo update-alternatives –config x-www-browser
 
 echo "Run this command to bind your dotfiles:"
 echo "python ~/dotfiles/builddotfiles.py -l"
 
+echo "Download and install Dropbox."
+firefox https://www.dropbox.com/install
+
+echo "About to install Dropbox."
+read -p "Press enter after you have downloaded Dropbox." -e input
+
+sudo dpkg --install ~/Downloads/dropbox*.deb
+
+echo "You may edit a file in a few moments. Set your editor."
+read -p "Press Enter when ready."
+sudo update-alternatives --config editor
+
+echo "Lets install some Firefox plugins"
+firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/
+firefox https://addons.mozilla.org/en-us/firefox/addon/vimperator/
+firefox https://addons.mozilla.org/en-US/firefox/addon/web-developer/?redirectlocale=en-US&redirectslug=Web_Developer_Extension_%28external%29
+firefox https://addons.mozilla.org/en-US/firefox/addon/wot-safe-browsing-tool/
+firefox https://addons.mozilla.org/en-us/firefox/addon/sitelauncher/
+firefox https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/
+
+echo "Change the SSH Port, if you wish."
+sudo vim /etc/ssh/sshd_config

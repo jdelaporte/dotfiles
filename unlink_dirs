@@ -1,0 +1,5 @@
+rm ~/.i3
+rm ~/.ssh
+rm ~/.vim
+mv ~/.i3 ~/i3_old
+mv ~/.ssh ~/ssh_old

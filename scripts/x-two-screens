@@ -1,6 +1,11 @@
+#!/bin/bash
+
+
+
 # Use the xrandr command with no arguments to determine the names of your connected monitors.
-export MONITORLEFT=DVI-1
-export MONITORRIGHT=DVI-0
+#  i.e. :!xrandr
+export MONITORLEFT=DVI-I-1
+export MONITORRIGHT=DVI-I-2
 export MONITORLAPTOP=LVDS1
 
 # Docking station cannot use second monitor while 
