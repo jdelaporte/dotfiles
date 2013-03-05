@@ -1,0 +1,32 @@
+#!/usr/bin/env python2
+
+'''Return the Complete Works of Shakesphere.'''
+import os
+import urllib2
+
+# Point this path to your most trusted source for the complete works of Shakesphere.
+MASTER_URI = 'http://www.gutenberg.org/cache/epub/100/pg100.txt'
+
+# Point this path wherever you would like the works of Shakesphere cached.
+CACHE_FILE = '~/.shakesphere'
+
+# Opening Line
+OPENING_LINE = 'THE SONNETS'
+
+CACHE_FILE = os.path.expanduser(CACHE_FILE)
+
+if not os.path.exists(CACHE_FILE):
+    response = urllib2.urlopen(MASTER_URI)
+    f = open(CACHE_FILE, 'w')
+    f.write(response)
+    f.close()
+
+f = open(CACHE_FILE, 'r')
+
+FOUND_START = False
+for line in f.readlines():
+    if OPENING_LINE in line:
+        FOUND_START = True
+    if FOUND_START:
+        print line
+f.close()
