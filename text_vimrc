@@ -61,17 +61,17 @@ map <Leader>lb :buffers<Cr>
 
 "    Confluence headers
 " -------------------------------------------------------
-au FileType *.mkd :map <Leader>h1 :.!make_header -t confluence -l 1<Cr>2j
-au BufEnter *.mkd :map <Leader>h2 :.!make_header -t confluence -l 2<Cr>2j
-au BufEnter *.mkd :map <Leader>h3 :.!make_header -t confluence -l 3<Cr>2j
-au BufEnter *.mkd :map <Leader>h4 :.!make_header -t confluence -l 4<Cr>2j
-au BufEnter *.mkd :map <Leader>h5 :.!make_header -t confluence -l 5<Cr>2j
+au FileType *.mkd :map <Leader>h1 :.!text-make-header -t confluence -l 1<Cr>2j
+au BufEnter *.mkd :map <Leader>h2 :.!text-make-header -t confluence -l 2<Cr>2j
+au BufEnter *.mkd :map <Leader>h3 :.!text-make-header -t confluence -l 3<Cr>2j
+au BufEnter *.mkd :map <Leader>h4 :.!text-make-header -t confluence -l 4<Cr>2j
+au BufEnter *.mkd :map <Leader>h5 :.!text-make-header -t confluence -l 5<Cr>2j
 
 "   Vimrc headers
 " -------------------------------------------------------
-au FileType vim map <Leader>h1 :.!make_header -l 1 -t vim<Cr>2j
-au FileType vim map <Leader>h2 :.!make_header -l 2 -t vim<Cr>2j
-au FileType vim map <Leader>h3 :.!make_header -l 3 -t vim<Cr>2j
+au FileType vim map <Leader>h1 :.!text-make-header -l 1 -t vim<Cr>2j
+au FileType vim map <Leader>h2 :.!text-make-header -l 2 -t vim<Cr>2j
+au FileType vim map <Leader>h3 :.!text-make-header -l 3 -t vim<Cr>2j
 
 
 "      Send stuff to Wordpress
@@ -80,10 +80,10 @@ map <Leader>tw :!send-to-wordpress %<Cr>
 
 
 " Plain text headers
-map <Leader>h1 :.!make_header -l 1<Cr>2j
-map <Leader>h2 :.!make_header -l 2<Cr>2j
+map <Leader>h1 :.!text-make-header -l 1<Cr>2j
+map <Leader>h2 :.!text-make-header -l 2<Cr>2j
 map <Leader>hl :!list-headers %<Cr>
-" au BufRead,BufNewFile vim map <Leader>h2 :.!make_header -l 2 -c vimrc<Cr>2j
+" au BufRead,BufNewFile vim map <Leader>h2 :.!text-make-header -l 2 -c vimrc<Cr>2j
 
 " VimRoom
 nnoremap <Leader>V VimroomToggle
