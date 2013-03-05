@@ -101,12 +101,17 @@ set backspace=indent,eol,start
 "Parenthesis matching.
 set showmatch 
 
+" Indent # Comments, rather then forcing them to column 1.
+:inoremap # X^H#
+
 " =======================================================
 " 14 tabs and indenting
 " =======================================================
 " Indentation is great.
 set smartindent
-filetype indent on
+" filetype indent on
+filetype plugin indent on
+
 
 " =======================================================
 " 15 folding
@@ -156,6 +161,26 @@ nnoremap ; :
 " :map <Leader>pl :!pylib 
 :map <Leader>pl :!pylint % > /tmp/out.txt<Cr>:e /tmp/out.txt<Cr>
 :map <Leader>pn :set nu!
+
+map <F2> :e %:r.pylint <bar> :read !pylint %:r.py
+
+" Check in all the things!!
+map <F3> :!svn ci %:r.*
+" Install!
+map <F4> :!make install
+" Run!
+map <F5> :!python %:r.py
+" HTML!
+map <F6> :!make html 
+
+" Find word under cursor in entire project.
+" map <F7> :zyw:!grep @z . -R <bar> grep -v .svn<Cr>
+map <F7> :!grep <C-r><C-w> . -R <bar> grep -v .svn 
+map <Leader>f :!grep <C-r><C-w> . -R -A1 -B1 -n <bar> grep -v .svn 
+
+" Run!
+map <F10> :!%
+
 " :map <Leader>pr :!sudo /etc/init.d/apache2 restart<Cr>
 
 " :map <Leader>pv :!w3m http://192.168.1.9/scripts<Cr> 
@@ -187,19 +212,6 @@ nnoremap ; :
 " Keep the code PEP8 compliant.
 " map <F2> :!pylint %:r.py > /tmp/pylint.txt <bar> :e /tmp/pylint.txt 
 " map <F2> :e /tmp/pylint.txt <bar> :read !pylint %:r.py 
-
-map <F2> :e %:r.pylint <bar> :read !pylint %:r.py
-
-" Check in all the things!!
-map <F3> :!svn ci %:r.*
-" Install!
-map <F4> :!make install
-" Run!
-map <F5> :!python %:r.py
-" HTML!
-map <F6> :!make html 
-" Run!
-map <F10> :!%
 
 " No SpellCheck by default.
 set nospell
