@@ -3,6 +3,7 @@
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
+sudo yum update
 sudo yum install vim git wget dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky alacarte apcupsd apcupsd-gui unetbootin rear
 
 # echo "You may use the Internet in a few moments. Set your browser."
@@ -78,6 +79,8 @@ echo "Download Adobe Flash player"
 firefox http://get.adobe.com/flashplayer/
 read -p "Press enter after you have downloaded Adobe Flash." -e input
 sudo yum install flash-plugin
+
+sudo yum update
 
 echo "Lets install some more Firefox plugins"
 firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/
