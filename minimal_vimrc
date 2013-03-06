@@ -102,7 +102,8 @@ set backspace=indent,eol,start
 set showmatch 
 
 " Indent # Comments, rather then forcing them to column 1.
-:inoremap # X^H#
+
+au BufWinEnter *.py inoremap # X^H#
 
 " =======================================================
 " 14 tabs and indenting
