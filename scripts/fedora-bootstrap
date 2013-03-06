@@ -54,8 +54,11 @@ firefox http://www.java.com/en/download/linux_manual.jsp?locale=en
 echo "About to install Sun Java."
 read -p "Press enter after you have downloaded Java." -e input
 
-sudo rpm --install ~/Downloads/jre*.rpm
+cd /usr/java
+sudo rpm -ivh ~/Downloads/jre*.rpm
 # sudo alternatives --install <link> java <path> <priority>
+
+cd ~
 
 echo "Download and install Handbrake."
 # firefox http://sourceforge.net/projects/handbrakerpm/
@@ -64,8 +67,7 @@ wget http://sourceforge.net/projects/handbrakerpm/files/latest/download?source=f
 echo "About to install Handbrake."
 read -p "Press enter after you have downloaded Handbrake." -e input
 
-sudo rpm --install ~/Downloads/HandBrake*.rpm
-
+sudo yum install -y ~/Downloads/HandBrake*.rpm
 
 
 # echo "You may edit a file in a few moments. Set your editor."
