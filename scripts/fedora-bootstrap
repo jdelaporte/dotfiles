@@ -41,7 +41,7 @@ echo "About to install Dropbox."
 read -p "Press enter after you have downloaded Dropbox." -e input
 
 # sudo dpkg --install ~/Downloads/dropbox*.deb
-sudo rpm --install ~/Downloads/nautilus-dropbox*.rpm
+sudo yum -y install ~/Downloads/nautilus-dropbox*.rpm
 
 echo "Download and install Minecraft."
 firefox https://minecraft.net/download
