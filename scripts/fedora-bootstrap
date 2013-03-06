@@ -49,7 +49,7 @@ firefox https://minecraft.net/download
 read -p "Press enter after you have downloaded Minecraft." -e input
 
 echo "Download and install Sun Java."
-firefox https://www.dropbox.com/install
+firefox http://www.java.com/en/download/linux_manual.jsp?locale=en
 
 echo "About to install Sun Java."
 read -p "Press enter after you have downloaded Java." -e input
