@@ -1,10 +1,9 @@
-
 #!/bin/bash
 
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
-sudo yum install vim git dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky
+sudo yum install vim git wget dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky apcupsd apcupsd-gui unetbootin rear
 
 # echo "You may use the Internet in a few moments. Set your browser."
 # read -p "Press Enter when ready."
@@ -44,17 +43,48 @@ read -p "Press enter after you have downloaded Dropbox." -e input
 # sudo dpkg --install ~/Downloads/dropbox*.deb
 sudo rpm --install ~/Downloads/dropbox*.rpm
 
+echo "Download and install Minecraft."
+firefox https://minecraft.net/download
+
+read -p "Press enter after you have downloaded Minecraft." -e input
+
+echo "Download and install Sun Java."
+firefox https://www.dropbox.com/install
+
+echo "About to install Sun Java."
+read -p "Press enter after you have downloaded Java." -e input
+
+sudo rpm --install ~/Downloads/jre*.rpm
+# sudo alternatives --install <link> java <path> <priority>
+
+echo "Download and install Handbrake."
+# firefox http://sourceforge.net/projects/handbrakerpm/
+wget http://sourceforge.net/projects/handbrakerpm/files/latest/download?source=files
+
+echo "About to install Handbrake."
+read -p "Press enter after you have downloaded Handbrake." -e input
+
+sudo rpm --install ~/Downloads/HandBrake*.rpm
+
+
+
 # echo "You may edit a file in a few moments. Set your editor."
 # read -p "Press Enter when ready."
 # sudo update-alternatives --config editor
 
-echo "Lets install some Firefox plugins"
+echo "Download Adobe Flash player"
+firefox http://get.adobe.com/flashplayer/
+read -p "Press enter after you have downloaded Adobe Flash." -e input
+sudo yum install flash-plugin
+
+echo "Lets install some more Firefox plugins"
 firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/
 firefox https://addons.mozilla.org/en-us/firefox/addon/vimperator/
 firefox https://addons.mozilla.org/en-US/firefox/addon/web-developer/?redirectlocale=en-US&redirectslug=Web_Developer_Extension_%28external%29
 firefox https://addons.mozilla.org/en-US/firefox/addon/wot-safe-browsing-tool/
 firefox https://addons.mozilla.org/en-us/firefox/addon/sitelauncher/
 firefox https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/
+
 
 echo "Change the SSH Port, if you wish."
 sudo vim /etc/ssh/sshd_config
