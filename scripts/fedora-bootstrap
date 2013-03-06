@@ -62,8 +62,7 @@ java -version
 cd ~
 
 echo "Download and install Handbrake."
-# firefox http://sourceforge.net/projects/handbrakerpm/
-wget http://sourceforge.net/projects/handbrakerpm/files/latest/download?source=files
+firefox http://sourceforge.net/projects/handbrakerpm/
 
 echo "About to install Handbrake."
 read -p "Press enter after you have downloaded Handbrake." -e input
