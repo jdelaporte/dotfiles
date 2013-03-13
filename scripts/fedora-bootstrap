@@ -91,7 +91,14 @@ read -p "Press enter after you have downloaded Android SDK." -e input
 mkdir ~/Development
 unzip ~/Downloads/adt*.zip -d ~/Development
 
+echo "Installing necessary 32 bit libraries for Android SDK"
 sudo yum install glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
+
+echo "Updating your system path for Android"
+echo "PATH=$PATH:$HOME/Development/AndroidSDK/" >> $HOME/.bash_profile
+echo "PATH=$PATH:$HOME/Development/AndroidSDK/sdk/tools/" >> $HOME/.bash_profile
+echo "PATH=$PATH:$HOME/Development/AndroidSDK/sdk/platform-tools/" >> $HOME/.bash_profile
+echo "export PATH" >> $HOME/.bash_profile
 
 # echo "You may edit a file in a few moments. Set your editor."
 # read -p "Press Enter when ready."
