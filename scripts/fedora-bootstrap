@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Ubuntu Bootstrap Script by EdTheDev"
+echo "Ubuntu Bootstrap Script by EdTheDev and jdelaporte"
 
 echo "Installing basic survival packages."
 sudo yum update
