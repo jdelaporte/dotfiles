@@ -1,10 +1,10 @@
-
 #!/bin/bash
 
 echo "Ubuntu Bootstrap Script by EdTheDev"
 
 echo "Installing basic survival packages."
-sudo yum install vim git dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky
+sudo yum update
+sudo yum install vim git wget dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky alacarte apcupsd apcupsd-gui unetbootin rear
 
 # echo "You may use the Internet in a few moments. Set your browser."
 # read -p "Press Enter when ready."
@@ -42,19 +42,76 @@ echo "About to install Dropbox."
 read -p "Press enter after you have downloaded Dropbox." -e input
 
 # sudo dpkg --install ~/Downloads/dropbox*.deb
-sudo rpm --install ~/Downloads/dropbox*.rpm
+sudo yum -y install ~/Downloads/nautilus-dropbox*.rpm
+
+echo "Download and install Minecraft."
+firefox https://minecraft.net/download
+
+read -p "Press enter after you have downloaded Minecraft." -e input
+
+echo "Download and install Sun Java."
+firefox http://www.java.com/en/download/linux_manual.jsp?locale=en
+
+echo "About to install Sun Java."
+read -p "Press enter after you have downloaded Java." -e input
+
+cd /usr/java
+sudo rpm -ivh ~/Downloads/jre*.rpm
+# sudo alternatives --install <link> java <path> <priority>
+
+cd ~
+
+echo "Download and install SweetHome3D."
+firefox http://www.sweethome3d.com/download.jsp
+
+echo "About to install SweetHome3D."
+read -p "Press enter after you have downloaded SweetHome3D." -e input
+
+
+echo "Download and install Handbrake."
+firefox http://sourceforge.net/projects/handbrakerpm/
+# wget http://sourceforge.net/projects/handbrakerpm/files/latest/download?source=files
+
+echo "About to install Handbrake."
+read -p "Press enter after you have downloaded Handbrake." -e input
+
+sudo yum install -y ~/Downloads/HandBrake*.rpm
+
+echo "Download and install RPMFusion free and nonfree."
+firefox http://rpmfusion.org/Configuration
+
+read -p "Press enter after you have downloaded both repositories." -e input
+
+echo "Download and install Android SDK."
+firefox "http://developer.android.com/sdk/index.html"
+
+echo "About to install Android SDK."
+read -p "Press enter after you have downloaded Android SDK." -e input
+
+mkdir ~/Development
+unzip ~/Downloads/adt*.zip -d ~/Development
+
+sudo yum install glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
 
 # echo "You may edit a file in a few moments. Set your editor."
 # read -p "Press Enter when ready."
 # sudo update-alternatives --config editor
 
-echo "Lets install some Firefox plugins"
+echo "Download Adobe Flash player"
+firefox http://get.adobe.com/flashplayer/
+read -p "Press enter after you have downloaded Adobe Flash." -e input
+sudo yum install flash-plugin
+
+sudo yum update
+
+echo "Lets install some more Firefox plugins"
 firefox https://addons.mozilla.org/en-US/firefox/addon/omnibar/
 firefox https://addons.mozilla.org/en-us/firefox/addon/vimperator/
 firefox https://addons.mozilla.org/en-US/firefox/addon/web-developer/?redirectlocale=en-US&redirectslug=Web_Developer_Extension_%28external%29
 firefox https://addons.mozilla.org/en-US/firefox/addon/wot-safe-browsing-tool/
 firefox https://addons.mozilla.org/en-us/firefox/addon/sitelauncher/
 firefox https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/
+
 
 echo "Change the SSH Port, if you wish."
 sudo vim /etc/ssh/sshd_config
