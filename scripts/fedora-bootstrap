@@ -4,7 +4,7 @@ echo "Ubuntu Bootstrap Script by EdTheDev and jdelaporte"
 
 echo "Installing basic survival packages."
 sudo yum update
-sudo yum install vim git wget dtach dvtm mcrypt keepassx xclip python firefox i3 openssh-server conky alacarte apcupsd apcupsd-gui unetbootin rear
+sudo yum install vim git wget dtach dvtm mcrypt pidgin keepassx xclip python firefox i3 openssh-server conky alacarte apcupsd apcupsd-gui unetbootin rear
 
 # echo "You may use the Internet in a few moments. Set your browser."
 # read -p "Press Enter when ready."
